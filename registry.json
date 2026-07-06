@@ -1,0 +1,865 @@
+{
+  "skills": [
+    {
+      "name": "cqrs-implementation",
+      "description": "Use when separating command/write models from query/read models, implementing CQRS handlers, designing eventual-consistency boundaries, or pairing CQRS with event sourcing.",
+      "source": "skills/database/cqrs-implementation"
+    },
+    {
+      "name": "database-migrations",
+      "description": "Use for safe schema/data migrations, rollback planning, migration tooling, and zero-downtime database changes.",
+      "source": "skills/database/database-migrations"
+    },
+    {
+      "name": "event-store-design",
+      "description": "Use when designing event stores for event-sourced systems, choosing storage technology, modeling streams, or implementing append-only event persistence and subscriptions.",
+      "source": "skills/database/event-store-design"
+    },
+    {
+      "name": "postgres-patterns",
+      "description": "Use for PostgreSQL query design, schema/table design, indexing, RLS, EXPLAIN-based optimization, feature-specific SQL review, and operational diagnostics.",
+      "source": "skills/database/postgres-patterns"
+    },
+    {
+      "name": "projection-patterns",
+      "description": "Use when building projections, materialized views, read models, search indexes, or dashboards from event streams in CQRS/event-sourced systems.",
+      "source": "skills/database/projection-patterns"
+    },
+    {
+      "name": "redis-patterns",
+      "description": "Use for Redis cache, session, rate-limit, lock, Pub/Sub, Streams, TTL, eviction, and key-design decisions.",
+      "source": "skills/database/redis-patterns"
+    },
+    {
+      "name": "saga-orchestration",
+      "description": "Use when implementing sagas for distributed transactions, compensating actions, cross-service workflows, long-running business processes, or debugging stuck saga states.",
+      "source": "skills/database/saga-orchestration"
+    },
+    {
+      "name": "sql-code-review",
+      "description": "Use when reviewing SQL or database-access code for injection risk, permissions, data protection, maintainability, schema quality, and cross-database SQL anti-patterns.",
+      "source": "skills/database/sql-code-review"
+    },
+    {
+      "name": "sql-optimization",
+      "description": "Use when diagnosing slow SQL, analyzing execution plans, designing indexes, optimizing pagination, batching, joins, aggregations, or cross-database query performance.",
+      "source": "skills/database/sql-optimization"
+    },
+    {
+      "name": "accessibility",
+      "description": "Use when designing or implementing accessible UI across web, iOS, or Android; routes WCAG, semantic HTML/ARIA, native accessibility labels, focus, contrast, and inclusive component behavior.",
+      "source": "skills/design/accessibility"
+    },
+    {
+      "name": "design-system-patterns",
+      "description": "Use when creating or evolving design systems: design tokens, theme architecture, component APIs, documentation, governance, multi-brand support, and design-to-code workflows.",
+      "source": "skills/design/design-system-patterns"
+    },
+    {
+      "name": "interaction-design",
+      "description": "Use when designing or implementing microinteractions, feedback, motion, transitions, gestures, loading states, empty states, or interaction polish for user-facing interfaces.",
+      "source": "skills/design/interaction-design"
+    },
+    {
+      "name": "mobile-android-design",
+      "description": "Use when designing or implementing native Android UI with Material Design 3, Jetpack Compose, adaptive layouts, dynamic color, navigation, accessibility, or Android platform polish.",
+      "source": "skills/design/mobile-android-design"
+    },
+    {
+      "name": "mobile-ios-design",
+      "description": "Use when designing or implementing native iOS interfaces with Apple HIG, SwiftUI, SF Symbols, Dynamic Type, navigation, gestures, accessibility, or platform-native polish.",
+      "source": "skills/design/mobile-ios-design"
+    },
+    {
+      "name": "react-native-design",
+      "description": "Use when designing React Native UI with styling systems, React Navigation, gestures, Reanimated motion, platform adaptation, accessibility, or native-feeling mobile polish.",
+      "source": "skills/design/react-native-design"
+    },
+    {
+      "name": "responsive-design",
+      "description": "Use when implementing adaptive interfaces with mobile-first layout, container queries, fluid typography, responsive media, CSS Grid/Flexbox, or component-level breakpoint strategy.",
+      "source": "skills/design/responsive-design"
+    },
+    {
+      "name": "tailwind-design-system",
+      "description": "Use when building or refactoring Tailwind CSS v4 design systems, including CSS-first tokens, themes, component variants, responsive patterns, and accessibility conventions.",
+      "source": "skills/design/tailwind-design-system"
+    },
+    {
+      "name": "visual-design-foundations",
+      "description": "Use when establishing or improving visual design foundations: typography, color systems, spacing, iconography, hierarchy, theming, or design-token choices for cohesive UI work.",
+      "source": "skills/design/visual-design-foundations"
+    },
+    {
+      "name": "wcag-audit-patterns",
+      "description": "Use when auditing existing web content for WCAG 2.2 conformance, combining automated checks, manual evidence, severity, remediation, and accessibility report output.",
+      "source": "skills/design/wcag-audit-patterns"
+    },
+    {
+      "name": "go-code-style",
+      "description": "Review Go readability, declarations, control flow, comments, and idiomatic clarity beyond gofmt.",
+      "source": "skills/golang/go-code-style"
+    },
+    {
+      "name": "go-concurrency-patterns",
+      "description": "Use when designing, implementing, reviewing, or debugging concurrent Go code with goroutines, channels, select, sync primitives, worker pools, cancellation, or graceful shutdown.",
+      "source": "skills/golang/go-concurrency-patterns"
+    },
+    {
+      "name": "go-error-handling",
+      "description": "Design and review Go error creation, wrapping, inspection, panic boundaries, and structured logging semantics.",
+      "source": "skills/golang/go-error-handling"
+    },
+    {
+      "name": "go-how-to",
+      "description": "Choose the right focused Go skill before coding, reviewing, testing, debugging, or restructuring Go projects.",
+      "source": "skills/golang/go-how-to"
+    },
+    {
+      "name": "go-naming",
+      "description": "Choose and review Go package, identifier, receiver, interface, constructor, error, enum, acronym, and test names.",
+      "source": "skills/golang/go-naming"
+    },
+    {
+      "name": "go-project-layout",
+      "description": "Structure Go repositories, cmd/internal/pkg layouts, modules, workspaces, tests, and right-sized project boundaries.",
+      "source": "skills/golang/go-project-layout"
+    },
+    {
+      "name": "go-safety",
+      "description": "Prevent Go panics, aliasing bugs, concurrent map access, leaks, numeric truncation, and unsafe zero values.",
+      "source": "skills/golang/go-safety"
+    },
+    {
+      "name": "go-testing",
+      "description": "Write, review, organize, and debug Go tests, including table tests, integration tests, race checks, fuzzing, and examples.",
+      "source": "skills/golang/go-testing"
+    },
+    {
+      "name": "go-troubleshooting",
+      "description": "Diagnose Go failures with evidence-first reproduction, tracing, race, pprof, and testing workflows.",
+      "source": "skills/golang/go-troubleshooting"
+    },
+    {
+      "name": "bash-defensive-patterns",
+      "description": "Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.",
+      "source": "skills/infrastructure/bash-defensive-patterns"
+    },
+    {
+      "name": "bats-testing-patterns",
+      "description": "Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.",
+      "source": "skills/infrastructure/bats-testing-patterns"
+    },
+    {
+      "name": "cloud-design-patterns",
+      "description": "Cloud design patterns for distributed systems architecture covering 42 industry-standard patterns across reliability, performance, messaging, security, and deployment categories. Use when designing, reviewing, or implementing distributed system architectures.",
+      "source": "skills/infrastructure/cloud-design-patterns"
+    },
+    {
+      "name": "cost-optimization",
+      "description": "Optimize cloud costs across AWS, Azure, GCP, and OCI through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing infrastructure costs, or implementing cost governance policies.",
+      "source": "skills/infrastructure/cost-optimization"
+    },
+    {
+      "name": "distributed-tracing",
+      "description": "Implement distributed tracing with Jaeger and Tempo to track requests across microservices and identify performance bottlenecks. Use when debugging microservices, analyzing request flows, or implementing observability for distributed systems.",
+      "source": "skills/infrastructure/distributed-tracing"
+    },
+    {
+      "name": "docker-patterns",
+      "description": "Use for Dockerfile, Compose, networking, volumes, security hardening, and local dev container workflows.",
+      "source": "skills/infrastructure/docker-patterns"
+    },
+    {
+      "name": "gitops-workflow",
+      "description": "Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOps practices, automating Kubernetes deployments, or setting up declarative infrastructure management.",
+      "source": "skills/infrastructure/gitops-workflow"
+    },
+    {
+      "name": "grafana-dashboards",
+      "description": "Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.",
+      "source": "skills/infrastructure/grafana-dashboards"
+    },
+    {
+      "name": "helm-chart-scaffolding",
+      "description": "Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, packaging Kubernetes applications, or implementing templated deployments.",
+      "source": "skills/infrastructure/helm-chart-scaffolding"
+    },
+    {
+      "name": "hybrid-cloud-networking",
+      "description": "Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building hybrid cloud architectures, connecting data centers to cloud, or implementing secure cross-premises networking.",
+      "source": "skills/infrastructure/hybrid-cloud-networking"
+    },
+    {
+      "name": "istio-traffic-management",
+      "description": "Configure Istio traffic management including routing, load balancing, circuit breakers, and canary deployments. Use when implementing service mesh traffic policies, progressive delivery, or resilience patterns.",
+      "source": "skills/infrastructure/istio-traffic-management"
+    },
+    {
+      "name": "k8s-manifest-generator",
+      "description": "Create production-ready Kubernetes manifests for Deployments, Services, ConfigMaps, and Secrets following best practices and security standards. Use when generating Kubernetes YAML manifests, creating K8s resources, or implementing production-grade Kubernetes configurations.",
+      "source": "skills/infrastructure/k8s-manifest-generator"
+    },
+    {
+      "name": "k8s-security-policies",
+      "description": "Implement Kubernetes security policies including NetworkPolicy, PodSecurityPolicy, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards.",
+      "source": "skills/infrastructure/k8s-security-policies"
+    },
+    {
+      "name": "linkerd-patterns",
+      "description": "Implement Linkerd service mesh patterns for lightweight, security-focused service mesh deployments. Use when setting up Linkerd, configuring traffic policies, or implementing zero-trust networking with minimal overhead.",
+      "source": "skills/infrastructure/linkerd-patterns"
+    },
+    {
+      "name": "mtls-configuration",
+      "description": "Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication.",
+      "source": "skills/infrastructure/mtls-configuration"
+    },
+    {
+      "name": "multi-cloud-architecture",
+      "description": "Design multi-cloud architectures using a decision framework to select and integrate services across AWS, Azure, GCP, and OCI. Use when building multi-cloud systems, avoiding vendor lock-in, or leveraging best-of-breed services from multiple providers.",
+      "source": "skills/infrastructure/multi-cloud-architecture"
+    },
+    {
+      "name": "prometheus-configuration",
+      "description": "Set up Prometheus for comprehensive metric collection, storage, and monitoring of infrastructure and applications. Use when implementing metrics collection, setting up monitoring infrastructure, or configuring alerting systems.",
+      "source": "skills/infrastructure/prometheus-configuration"
+    },
+    {
+      "name": "service-mesh-observability",
+      "description": "Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debugging latency issues, or implementing SLOs for service communication.",
+      "source": "skills/infrastructure/service-mesh-observability"
+    },
+    {
+      "name": "shellcheck-configuration",
+      "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
+      "source": "skills/infrastructure/shellcheck-configuration"
+    },
+    {
+      "name": "slo-implementation",
+      "description": "Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance.",
+      "source": "skills/infrastructure/slo-implementation"
+    },
+    {
+      "name": "terraform-module-library",
+      "description": "Build reusable Terraform modules for AWS, Azure, GCP, and OCI infrastructure following infrastructure-as-code best practices. Use when creating infrastructure modules, standardizing cloud provisioning, or implementing reusable IaC components.",
+      "source": "skills/infrastructure/terraform-module-library"
+    },
+    {
+      "name": "acquire-codebase-knowledge",
+      "description": "Use this skill when the user asks to map, document, or onboard into an existing codebase, especially repository-level architecture discovery and codebase knowledge capture.",
+      "source": "skills/meta/acquire-codebase-knowledge"
+    },
+    {
+      "name": "add-educational-comments",
+      "description": "Use this skill when adding educational comments to existing code to explain intent, trade-offs, and non-obvious behavior without cluttering straightforward lines.",
+      "source": "skills/meta/add-educational-comments"
+    },
+    {
+      "name": "api-design",
+      "description": "Use when designing or reviewing HTTP API contracts, including REST resources, methods, status codes, pagination, filtering, versioning, rate limits, and OpenAPI-facing behavior.",
+      "source": "skills/meta/api-design"
+    },
+    {
+      "name": "architecture-patterns",
+      "description": "Use this skill when designing or refactoring backend architecture with clean architecture, hexagonal architecture, domain-driven design, bounded contexts, or layer dependency rules.",
+      "source": "skills/meta/architecture-patterns"
+    },
+    {
+      "name": "backend-patterns",
+      "description": "Use when designing backend service structure, data access, middleware, caching, background jobs, transactions, or server-side architecture behind an API or application.",
+      "source": "skills/meta/backend-patterns"
+    },
+    {
+      "name": "breakdown-epic-arch",
+      "description": "Use this skill when turning an epic PRD into a high-level technical architecture, including system boundaries, components, data flow, risks, and implementation sequencing.",
+      "source": "skills/meta/breakdown-epic-arch"
+    },
+    {
+      "name": "breakdown-epic-pm",
+      "description": "Use this skill when turning a high-level product idea into an epic-level PRD with goals, users, journeys, requirements, scope, and success metrics.",
+      "source": "skills/meta/breakdown-epic-pm"
+    },
+    {
+      "name": "breakdown-feature-implementation",
+      "description": "Use this skill when converting a feature PRD or architecture brief into a detailed implementation plan with tasks, dependencies, files, and validation steps.",
+      "source": "skills/meta/breakdown-feature-implementation"
+    },
+    {
+      "name": "breakdown-feature-prd",
+      "description": "Use this skill when deriving a focused feature PRD from an epic, including user value, requirements, non-goals, acceptance criteria, and metrics.",
+      "source": "skills/meta/breakdown-feature-prd"
+    },
+    {
+      "name": "breakdown-plan",
+      "description": "Use this skill when decomposing a project or GitHub issue into an epic, feature, story/enabler, and test hierarchy with dependencies, priorities, and tracking artifacts.",
+      "source": "skills/meta/breakdown-plan"
+    },
+    {
+      "name": "breakdown-test",
+      "description": "Use this skill when creating a test strategy and QA task breakdown for a project, feature, or issue, including coverage goals, risks, and validation gates.",
+      "source": "skills/meta/breakdown-test"
+    },
+    {
+      "name": "code-review-excellence",
+      "description": "Use this skill when reviewing pull requests, establishing code review standards, or giving constructive engineering feedback that catches defects and improves maintainability.",
+      "source": "skills/meta/code-review-excellence"
+    },
+    {
+      "name": "codebase-design",
+      "description": "Use when shaping module interfaces, placing seams, deepening shallow code, or making code more testable, local, and AI-navigable.",
+      "source": "skills/meta/codebase-design"
+    },
+    {
+      "name": "decision-mapping",
+      "description": "Use when a loose idea has multiple unresolved decisions that must be mapped, sequenced, and resolved across one or more focused sessions.",
+      "source": "skills/meta/decision-mapping"
+    },
+    {
+      "name": "diagnose",
+      "description": "Use this skill when performing a systematic diagnostic scan of an AI workflow across prompt quality, context efficiency, tool health, architecture fitness, and safety.",
+      "source": "skills/meta/diagnose"
+    },
+    {
+      "name": "diagnosing-bugs",
+      "description": "Use a tight feedback-loop workflow to diagnose bugs, regressions, flakes, crashes, or slow behavior before fixing them.",
+      "source": "skills/meta/diagnosing-bugs"
+    },
+    {
+      "name": "documentation-writer",
+      "description": "Use this skill when writing, restructuring, or reviewing technical documentation with Di\u00e1taxis-style separation of tutorials, how-to guides, reference, and explanation.",
+      "source": "skills/meta/documentation-writer"
+    },
+    {
+      "name": "domain-modeling",
+      "description": "Use when sharpening domain terminology, maintaining a glossary, resolving overloaded concepts, or recording consequential architecture decisions as ADRs.",
+      "source": "skills/meta/domain-modeling"
+    },
+    {
+      "name": "editorconfig",
+      "description": "Use this skill when creating or updating a project .editorconfig by inspecting repository languages, formatting conventions, and editor portability needs.",
+      "source": "skills/meta/editorconfig"
+    },
+    {
+      "name": "error-handling",
+      "description": "Use when designing cross-language error models, retry policy, failure boundaries, API/user messages, or reviewing code for swallowed, leaky, or inconsistent errors.",
+      "source": "skills/meta/error-handling"
+    },
+    {
+      "name": "frontend-design-direction",
+      "description": "Use when a web UI needs visual direction, hierarchy, tone, layout, responsive behavior, motion, or polish beyond functional frontend implementation.",
+      "source": "skills/meta/frontend-design-direction"
+    },
+    {
+      "name": "frontend-patterns",
+      "description": "Use when implementing React or Next.js UI behavior, component composition, state, data fetching, forms, routing, performance, accessibility, or client-side error boundaries.",
+      "source": "skills/meta/frontend-patterns"
+    },
+    {
+      "name": "grill-me",
+      "description": "Stress-test a plan or design through a focused one-question-at-a-time interview before implementation.",
+      "source": "skills/meta/grill-me"
+    },
+    {
+      "name": "grill-with-docs",
+      "description": "Stress-test a plan through an interview while producing durable ADR, glossary, or decision-log artifacts.",
+      "source": "skills/meta/grill-with-docs"
+    },
+    {
+      "name": "handoff",
+      "description": "Create a concise handoff artifact so a fresh agent can continue work without rereading the whole session.",
+      "source": "skills/meta/handoff"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "description": "Use when scanning a codebase for shallow modules, poor seams, testability friction, or deepening opportunities and presenting candidates for user selection.",
+      "source": "skills/meta/improve-codebase-architecture"
+    },
+    {
+      "name": "microservices-patterns",
+      "description": "Use this skill when designing microservice boundaries, event-driven communication, distributed resilience, service ownership, or monolith decomposition plans.",
+      "source": "skills/meta/microservices-patterns"
+    },
+    {
+      "name": "monorepo-management",
+      "description": "Use this skill when setting up, reviewing, or optimizing monorepos with workspace package managers, shared dependencies, build orchestration, and affected-task workflows.",
+      "source": "skills/meta/monorepo-management"
+    },
+    {
+      "name": "openapi-spec-generation",
+      "description": "Use this skill when creating or maintaining OpenAPI 3.1 specifications, synchronizing code-first/design-first contracts, generating SDKs, or validating API documentation.",
+      "source": "skills/meta/openapi-spec-generation"
+    },
+    {
+      "name": "production-audit",
+      "description": "Use for local-evidence production readiness audits before launch, deploy, demo, or rollout when the user asks what could break in production.",
+      "source": "skills/meta/production-audit"
+    },
+    {
+      "name": "prompt-engineering-patterns",
+      "description": "Use this skill when designing, debugging, or optimizing production prompts, prompt templates, few-shot examples, structured outputs, or advanced prompting workflows.",
+      "source": "skills/meta/prompt-engineering-patterns"
+    },
+    {
+      "name": "prompt-optimizer",
+      "description": "Use when the user asks to improve, rewrite, critique, or optimize a prompt; output an optimized prompt and rationale without executing the underlying task.",
+      "source": "skills/meta/prompt-optimizer"
+    },
+    {
+      "name": "publish-to-pages",
+      "description": "Use this skill when publishing presentations or static web content to GitHub Pages, including converting PPTX/PDF inputs and returning a live Pages URL.",
+      "source": "skills/meta/publish-to-pages"
+    },
+    {
+      "name": "quality-playbook",
+      "description": "Use this skill when establishing a project quality system with quality principles, spec-traced tests, review protocols, integration testing, and codebase-specific audit artifacts.",
+      "source": "skills/meta/quality-playbook"
+    },
+    {
+      "name": "repo-scan",
+      "description": "Use when auditing a large or legacy repository to classify source assets, embedded third-party code, build artifacts, dead weight, and module-level ownership risks.",
+      "source": "skills/meta/repo-scan"
+    },
+    {
+      "name": "skill-authoring",
+      "description": "Use when writing, reviewing, or maintaining Agent Skills in this repo, including frontmatter, descriptions, directory layout, progressive disclosure, and support files.",
+      "source": "skills/meta/skill-authoring"
+    },
+    {
+      "name": "update-markdown-file-index",
+      "description": "Use this skill when updating a Markdown file section with a generated index or table of files from a target folder while preserving surrounding content.",
+      "source": "skills/meta/update-markdown-file-index"
+    },
+    {
+      "name": "embedding-strategies",
+      "description": "Select and optimize embedding models for semantic search and RAG applications. Use when choosing embedding models, implementing chunking strategies, or optimizing embedding quality for specific domains.",
+      "source": "skills/platforms/embedding-strategies"
+    },
+    {
+      "name": "godot-gdscript-patterns",
+      "description": "Master Godot 4 GDScript patterns including signals, scenes, state machines, and optimization. Use when building Godot games, implementing game systems, or learning GDScript best practices.",
+      "source": "skills/platforms/godot-gdscript-patterns"
+    },
+    {
+      "name": "hybrid-search-implementation",
+      "description": "Combine vector and keyword search for improved retrieval. Use when implementing RAG systems, building search engines, or when neither approach alone provides sufficient recall.",
+      "source": "skills/platforms/hybrid-search-implementation"
+    },
+    {
+      "name": "langchain-architecture",
+      "description": "Design LLM applications using LangChain 1.x and LangGraph for agents, memory, and tool integration. Use when building LangChain applications, implementing AI agents, or creating complex LLM workflows.",
+      "source": "skills/platforms/langchain-architecture"
+    },
+    {
+      "name": "llm-evaluation",
+      "description": "Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.",
+      "source": "skills/platforms/llm-evaluation"
+    },
+    {
+      "name": "mcp-server-patterns",
+      "description": "Build MCP servers with Node/TypeScript SDK \u2014 tools, resources, prompts, Zod validation, stdio vs Streamable HTTP. Use Context7 or official MCP docs for latest API.",
+      "source": "skills/platforms/mcp-server-patterns"
+    },
+    {
+      "name": "qdrant-clients-sdk",
+      "description": "Use when integrating Qdrant client SDKs, choosing language-specific APIs, wiring collections/search/upserts, or reviewing Qdrant application code.",
+      "source": "skills/platforms/qdrant-clients-sdk"
+    },
+    {
+      "name": "qdrant-deployment-options",
+      "description": "Guides Qdrant deployment selection. Use when someone asks 'how to deploy Qdrant', 'Docker vs Cloud', 'local mode', 'embedded Qdrant', 'Qdrant EDGE', 'which deployment option', 'self-hosted vs cloud', or 'need lowest latency deployment'. Also use when choosing between deployment types for a new project.",
+      "source": "skills/platforms/qdrant-deployment-options"
+    },
+    {
+      "name": "qdrant-model-migration",
+      "description": "Guides embedding model migration in Qdrant without downtime. Use when someone asks 'how to switch embedding models', 'how to migrate vectors', 'how to update to a new model', 'zero-downtime model change', 'how to re-embed my data', or 'can I use two models at once'. Also use when upgrading model dimensions, switching providers, or A/B testing models.",
+      "source": "skills/platforms/qdrant-model-migration"
+    },
+    {
+      "name": "qdrant-monitoring",
+      "description": "Guides Qdrant monitoring and observability setup. Use when someone asks 'how to monitor Qdrant', 'what metrics to track', 'is Qdrant healthy', 'optimizer stuck', 'why is memory growing', 'requests are slow', or needs to set up Prometheus, Grafana, or health checks. Also use when debugging production issues that require metric analysis.",
+      "source": "skills/platforms/qdrant-monitoring"
+    },
+    {
+      "name": "qdrant-performance-optimization",
+      "description": "Different techniques to optimize the performance of Qdrant, including indexing strategies, query optimization, and hardware considerations. Use when you want to improve the speed and efficiency of your Qdrant deployment.",
+      "source": "skills/platforms/qdrant-performance-optimization"
+    },
+    {
+      "name": "qdrant-scaling",
+      "description": "Guides Qdrant scaling decisions. Use when someone asks 'how many nodes do I need', 'data doesn't fit on one node', 'need more throughput', 'cluster is slow', 'too many tenants', 'vertical or horizontal', 'how to shard', or 'need to add capacity'.",
+      "source": "skills/platforms/qdrant-scaling"
+    },
+    {
+      "name": "qdrant-search-quality",
+      "description": "Diagnoses and improves Qdrant search relevance. Use when someone reports 'search results are bad', 'wrong results', 'low precision', 'low recall', 'irrelevant matches', 'missing expected results', or asks 'how to improve search quality?', 'which embedding model?', 'should I use hybrid search?', 'should I use reranking?'. Also use when search quality degrades after quantization, model change, or data growth.",
+      "source": "skills/platforms/qdrant-search-quality"
+    },
+    {
+      "name": "qdrant-version-upgrade",
+      "description": "Use when planning or executing Qdrant version upgrades, preserving availability, checking compatibility, and protecting data integrity.",
+      "source": "skills/platforms/qdrant-version-upgrade"
+    },
+    {
+      "name": "rag-implementation",
+      "description": "Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integrating LLMs with external knowledge bases.",
+      "source": "skills/platforms/rag-implementation"
+    },
+    {
+      "name": "react-native-architecture",
+      "description": "Build production React Native apps with Expo, navigation, native modules, offline sync, and cross-platform patterns. Use when developing mobile apps, implementing native integrations, or architecting React Native projects.",
+      "source": "skills/platforms/react-native-architecture"
+    },
+    {
+      "name": "rust-async-patterns",
+      "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code.",
+      "source": "skills/platforms/rust-async-patterns"
+    },
+    {
+      "name": "similarity-search-patterns",
+      "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+      "source": "skills/platforms/similarity-search-patterns"
+    },
+    {
+      "name": "vector-index-tuning",
+      "description": "Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.",
+      "source": "skills/platforms/vector-index-tuning"
+    },
+    {
+      "name": "workflow-orchestration-patterns",
+      "description": "Design durable workflows with Temporal for distributed systems. Covers workflow vs activity separation, saga patterns, state management, and determinism constraints. Use when building long-running processes, distributed transactions, or microservice orchestration.",
+      "source": "skills/platforms/workflow-orchestration-patterns"
+    },
+    {
+      "name": "async-python-patterns",
+      "description": "Use for Python asyncio and concurrency: async/await, event loops, tasks, cancellation, timeouts, async I/O, and non-blocking APIs.",
+      "source": "skills/python/async-python-patterns"
+    },
+    {
+      "name": "django-celery",
+      "description": "Use for Django Celery integration: app setup, settings, shared_task design, Beat schedules, retries, canvas, monitoring, and task tests.",
+      "source": "skills/python/django-celery"
+    },
+    {
+      "name": "django-patterns",
+      "description": "Build and review Django apps across settings, ORM, views, forms, admin, and deployment boundaries.",
+      "source": "skills/python/django-patterns"
+    },
+    {
+      "name": "django-security",
+      "description": "Review Django authentication, authorization, CSRF, cookies, headers, secrets, and deployment hardening.",
+      "source": "skills/python/django-security"
+    },
+    {
+      "name": "django-verification",
+      "description": "Run Django verification loops for migrations, checks, tests, coverage, security, and release readiness.",
+      "source": "skills/python/django-verification"
+    },
+    {
+      "name": "fastapi-patterns",
+      "description": "Build and review FastAPI apps with dependencies, Pydantic models, lifespan, OpenAPI, tests, and production boundaries.",
+      "source": "skills/python/fastapi-patterns"
+    },
+    {
+      "name": "pytest-coverage",
+      "description": "Use when running pytest with coverage, finding uncovered Python lines or branches, and adding targeted tests until a requested coverage threshold is met.",
+      "source": "skills/python/pytest-coverage"
+    },
+    {
+      "name": "python-anti-patterns",
+      "description": "Review Python code for common anti-patterns and safer refactoring paths.",
+      "source": "skills/python/python-anti-patterns"
+    },
+    {
+      "name": "python-background-jobs",
+      "description": "Use for Python queue/worker systems: background jobs, retries, idempotency, job status, dead-letter queues, and worker operations.",
+      "source": "skills/python/python-background-jobs"
+    },
+    {
+      "name": "python-code-style",
+      "description": "Apply Python formatting, linting, naming, import, and docstring conventions.",
+      "source": "skills/python/python-code-style"
+    },
+    {
+      "name": "python-configuration",
+      "description": "Design typed, environment-driven Python configuration and settings loading.",
+      "source": "skills/python/python-configuration"
+    },
+    {
+      "name": "python-design-patterns",
+      "description": "Use for Python component design: layering, abstraction choices, dependency injection, composition vs inheritance, SRP, and coupling refactors.",
+      "source": "skills/python/python-design-patterns"
+    },
+    {
+      "name": "python-error-handling",
+      "description": "Design Python validation, exception, retry boundary, and partial-failure behavior.",
+      "source": "skills/python/python-error-handling"
+    },
+    {
+      "name": "python-observability",
+      "description": "Add Python structured logging, metrics, tracing, and production diagnostics.",
+      "source": "skills/python/python-observability"
+    },
+    {
+      "name": "python-packaging",
+      "description": "Package Python projects with pyproject.toml, build metadata, wheels, and releases.",
+      "source": "skills/python/python-packaging"
+    },
+    {
+      "name": "python-patterns",
+      "description": "Use for Python language idioms: typing, context managers, comprehensions, generators, dataclasses, decorators, errors, imports, and tooling.",
+      "source": "skills/python/python-patterns"
+    },
+    {
+      "name": "python-performance-optimization",
+      "description": "Profile Python bottlenecks and apply measured CPU, memory, and I/O optimizations.",
+      "source": "skills/python/python-performance-optimization"
+    },
+    {
+      "name": "python-project-structure",
+      "description": "Organize Python packages, modules, public APIs, imports, and project layout.",
+      "source": "skills/python/python-project-structure"
+    },
+    {
+      "name": "python-resilience",
+      "description": "Add Python timeouts, retries, backoff, idempotency, and graceful degradation.",
+      "source": "skills/python/python-resilience"
+    },
+    {
+      "name": "python-resource-management",
+      "description": "Manage Python files, connections, locks, streams, and cleanup lifecycles safely.",
+      "source": "skills/python/python-resource-management"
+    },
+    {
+      "name": "python-testing",
+      "description": "Retired alias. Use python-testing-patterns for Python pytest tests, fixtures, mocks, coverage, TDD, async tests, and CI setup.",
+      "source": "skills/python/python-testing"
+    },
+    {
+      "name": "python-testing-patterns",
+      "description": "Use for Python pytest tests, fixtures, mocks, parametrization, coverage, TDD, async tests, and CI test setup.",
+      "source": "skills/python/python-testing-patterns"
+    },
+    {
+      "name": "python-type-safety",
+      "description": "Add Python annotations, generics, protocols, narrowing, and type-checker configuration.",
+      "source": "skills/python/python-type-safety"
+    },
+    {
+      "name": "ruff-recursive-fix",
+      "description": "Use when running Ruff iteratively on Python code, applying safe fixes, reviewing unsafe fixes, formatting, and resolving remaining lint findings with minimal manual edits.",
+      "source": "skills/python/ruff-recursive-fix"
+    },
+    {
+      "name": "temporal-python-testing",
+      "description": "Use when testing Temporal Python workflows or activities with pytest, time-skipping, mocked activities, replay testing, local test servers, or CI coverage for workflow determinism.",
+      "source": "skills/python/temporal-python-testing"
+    },
+    {
+      "name": "uv-package-manager",
+      "description": "Use uv for Python projects, dependencies, lockfiles, virtualenvs, tools, and scripts.",
+      "source": "skills/python/uv-package-manager"
+    },
+    {
+      "name": "attack-tree-construction",
+      "description": "Use when building or reviewing attack trees to map attacker goals, OR/AND paths, defense gaps, likelihood, cost, detection, and risk communication for security architecture or penetration-test planning.",
+      "source": "skills/security/attack-tree-construction"
+    },
+    {
+      "name": "auth-implementation-patterns",
+      "description": "Use when implementing, reviewing, or debugging authentication and authorization flows including sessions, JWTs, OAuth2/OIDC, SSO, MFA, RBAC/ABAC, token storage, and API access control.",
+      "source": "skills/security/auth-implementation-patterns"
+    },
+    {
+      "name": "gdpr-compliant",
+      "description": "Use when designing, implementing, or reviewing systems that process personal data, including user accounts, analytics, cookies, logs, retention, exports, deletion, breach response, DPIAs, subprocessors, or privacy-by-design questions.",
+      "source": "skills/security/gdpr-compliant"
+    },
+    {
+      "name": "memory-safety-patterns",
+      "description": "Use when designing, reviewing, or debugging code for memory-safety risks such as ownership errors, lifetime bugs, use-after-free, double-free, buffer overflow, unsafe pointer use, resource leaks, or concurrency-related memory hazards.",
+      "source": "skills/security/memory-safety-patterns"
+    },
+    {
+      "name": "sast-configuration",
+      "description": "Use when selecting, configuring, tuning, or reviewing Static Application Security Testing for application code, including Semgrep, CodeQL, SonarQube, custom rules, CI integration, SARIF output, and false-positive triage.",
+      "source": "skills/security/sast-configuration"
+    },
+    {
+      "name": "secret-scanning",
+      "description": "Use when enabling, configuring, or troubleshooting secret scanning, push protection, custom secret patterns, alert triage, remediation, or pre-commit checks for leaked credentials in repositories and CI/CD workflows.",
+      "source": "skills/security/secret-scanning"
+    },
+    {
+      "name": "security-requirement-extraction",
+      "description": "Use when turning threat models, audits, compliance obligations, incidents, or architecture reviews into specific, testable security requirements and acceptance criteria.",
+      "source": "skills/security/security-requirement-extraction"
+    },
+    {
+      "name": "security-review",
+      "description": "Use when reviewing application code or product changes for security risks in auth, authorization, user input, data exposure, secrets, dependencies, payments, APIs, uploads, or sensitive workflows.",
+      "source": "skills/security/security-review"
+    },
+    {
+      "name": "security-scan",
+      "description": "Use when scanning Claude Code or agent configuration for prompt-injection, permission, MCP, hook, secret, and config risks with AgentShield or similar tooling.",
+      "source": "skills/security/security-scan"
+    },
+    {
+      "name": "stride-analysis-patterns",
+      "description": "Use when applying STRIDE threat modeling to systems, features, diagrams, APIs, data flows, or architecture reviews to identify spoofing, tampering, repudiation, information disclosure, denial of service, and elevation-of-privilege risks.",
+      "source": "skills/security/stride-analysis-patterns"
+    },
+    {
+      "name": "threat-mitigation-mapping",
+      "description": "Use when converting identified threats into preventive, detective, corrective, and compensating controls; prioritizing remediation; validating coverage; or building a risk treatment roadmap.",
+      "source": "skills/security/threat-mitigation-mapping"
+    },
+    {
+      "name": "e2e-testing-patterns",
+      "description": "Use when designing or maintaining end-to-end browser tests, user journeys, selectors, test data, CI execution, debugging, and flaky-test reduction.",
+      "source": "skills/typescript/e2e-testing-patterns"
+    },
+    {
+      "name": "javascript-testing-patterns",
+      "description": "Use when writing, reviewing, or improving JavaScript tests with Jest, Vitest, Testing Library, mocks, fixtures, async assertions, and coverage strategy.",
+      "source": "skills/typescript/javascript-testing-patterns"
+    },
+    {
+      "name": "modern-javascript-patterns",
+      "description": "Use when writing or modernizing JavaScript with ES modules, async patterns, iterators, destructuring, classes, functional helpers, and runtime-compatible language features.",
+      "source": "skills/typescript/modern-javascript-patterns"
+    },
+    {
+      "name": "nextjs-app-router-patterns",
+      "description": "Use when building, reviewing, or migrating Next.js App Router applications, including layouts, server/client components, data fetching, routing, metadata, and deployment concerns.",
+      "source": "skills/typescript/nextjs-app-router-patterns"
+    },
+    {
+      "name": "nodejs-backend-patterns",
+      "description": "Use when building, reviewing, or refactoring Node.js backends with Express or Fastify, including middleware, errors, auth, data access, API design, and production readiness.",
+      "source": "skills/typescript/nodejs-backend-patterns"
+    },
+    {
+      "name": "react-audit-grep-patterns",
+      "description": "Use when auditing React codebases with targeted search patterns for deprecated APIs, React 18/19 migration risks, dependency issues, or test modernization work.",
+      "source": "skills/typescript/react-audit-grep-patterns"
+    },
+    {
+      "name": "react-modernization",
+      "description": "Use when modernizing React applications, upgrading React versions, migrating class components or legacy APIs, adopting React 18/19 features, or resolving upgrade regressions.",
+      "source": "skills/typescript/react-modernization"
+    },
+    {
+      "name": "react-state-management",
+      "description": "Use when choosing, implementing, or debugging React state management with local state, Redux Toolkit, Zustand, Jotai, React Query, SWR, or optimistic updates.",
+      "source": "skills/typescript/react-state-management"
+    },
+    {
+      "name": "typescript-advanced-types",
+      "description": "Use when implementing complex TypeScript types, generics, conditional types, mapped types, template literal types, or type-safe library and API surfaces.",
+      "source": "skills/typescript/typescript-advanced-types"
+    },
+    {
+      "name": "vite-patterns",
+      "description": "Use when configuring or debugging Vite projects, including config files, plugins, env, HMR, dev proxy, SSR, library mode, dependency optimization, and builds.",
+      "source": "skills/typescript/vite-patterns"
+    },
+    {
+      "name": "web-component-design",
+      "description": "Use when designing or reviewing reusable React, Vue, or Svelte components, component APIs, styling approaches, accessibility, and composition patterns.",
+      "source": "skills/typescript/web-component-design"
+    },
+    {
+      "name": "webapp-testing",
+      "description": "Use when testing or debugging web applications with Playwright or browser automation, including user flows, screenshots, console logs, forms, and regression checks.",
+      "source": "skills/typescript/webapp-testing"
+    },
+    {
+      "name": "changelog-automation",
+      "description": "Use when generating or automating changelogs, release notes, Conventional Commit based release summaries, Keep a Changelog files, or version history workflows.",
+      "source": "skills/version-control/changelog-automation"
+    },
+    {
+      "name": "dependabot",
+      "description": "Use when configuring GitHub Dependabot, dependabot.yml, grouped dependency updates, security update PRs, package ecosystem schedules, or Dependabot PR handling.",
+      "source": "skills/version-control/dependabot"
+    },
+    {
+      "name": "dependency-upgrade",
+      "description": "Use when planning or executing dependency upgrades, especially major version changes, breaking changes, compatibility checks, staged rollouts, or dependency conflict resolution.",
+      "source": "skills/version-control/dependency-upgrade"
+    },
+    {
+      "name": "gh-cli",
+      "description": "Use when operating GitHub from the command line with `gh`: repositories, issues, pull requests, Actions, releases, gists, codespaces, organizations, or GitHub API calls.",
+      "source": "skills/version-control/gh-cli"
+    },
+    {
+      "name": "git-advanced-workflows",
+      "description": "Use for advanced Git operations such as rebase, cherry-pick, bisect, reflog recovery, worktrees, history cleanup, branch synchronization, or complex repository troubleshooting.",
+      "source": "skills/version-control/git-advanced-workflows"
+    },
+    {
+      "name": "git-commit",
+      "description": "Use when creating commits, staging logical changes, generating Conventional Commit messages from diffs, or checking commit message type, scope, body, footer, and breaking-change notation.",
+      "source": "skills/version-control/git-commit"
+    },
+    {
+      "name": "git-flow-branch-creator",
+      "description": "Use when creating Git Flow style branches from current work, choosing feature/fix/hotfix/release/support branch types, or naming branches from repository changes.",
+      "source": "skills/version-control/git-flow-branch-creator"
+    },
+    {
+      "name": "git-workflow",
+      "description": "Use when choosing or documenting Git branch strategy, commit and PR conventions, merge/rebase policy, release tags, hooks, or team collaboration workflow.",
+      "source": "skills/version-control/git-workflow"
+    },
+    {
+      "name": "github-issues",
+      "description": "Use when creating, updating, searching, triaging, linking, labeling, assigning, or managing GitHub issues, issue types, issue templates, sub-issues, dependencies, or project fields.",
+      "source": "skills/version-control/github-issues"
+    },
+    {
+      "name": "github-ops",
+      "description": "Use for GitHub repository operations with `gh`: issue triage, PR management, CI status, releases, security alerts, stale items, contributor workflows, and repository maintenance.",
+      "source": "skills/version-control/github-ops"
+    },
+    {
+      "name": "github-release",
+      "description": "Use when cutting GitHub releases, bumping versions, generating changelogs, creating release PRs or tags, and publishing release notes with `gh` and Git.",
+      "source": "skills/version-control/github-release"
+    },
+    {
+      "name": "make-repo-contribution",
+      "description": "Use before contributing to a repository: reading contribution guidance, filing issues, creating branches, writing commits, pushing changes, or opening pull requests that must follow project-specific rules.",
+      "source": "skills/version-control/make-repo-contribution"
+    },
+    {
+      "name": "resolving-merge-conflicts",
+      "description": "Use when a git merge, rebase, cherry-pick, or stash apply is already conflicted and needs safe semantic conflict resolution plus verification.",
+      "source": "skills/version-control/resolving-merge-conflicts"
+    }
+  ],
+  "agents": [
+    {
+      "name": "sample-agent",
+      "description": "A minimal sample opencode agent.",
+      "source": "agents/sample-agent.md"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "sample-hook",
+      "description": "A minimal sample opencode hook plugin.",
+      "source": "hooks/sample-hook.ts"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "sample-plugin",
+      "description": "A minimal sample opencode plugin.",
+      "source": "plugins/sample-plugin.ts"
+    }
+  ]
+}

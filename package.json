@@ -1,0 +1,33 @@
+{
+  "name": "@voidrot/agents",
+  "version": "0.1.0",
+  "description": "Bare-bones CLI for installing Voidrot opencode agents, skills, hooks, and plugins.",
+  "type": "commonjs",
+  "bin": {
+    "agents": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist/",
+    "registry.json",
+    "skills/",
+    "agents/",
+    "hooks/",
+    "plugins/",
+    "README.md",
+    "cli/README.md"
+  ]
+}

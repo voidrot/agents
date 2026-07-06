@@ -1,0 +1,77 @@
+name: Publish registry
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - registry.json
+      - package.json
+      - package-lock.json
+      - cli/src/**
+      - .github/workflows/publish-registry.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and validate registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CLI
+        run: npm run build
+
+      - name: Validate registry JSON
+        run: node -e "JSON.parse(require('node:fs').readFileSync('registry.json', 'utf8'))"
+
+      - name: Prepare registry artifact
+        run: |
+          mkdir -p public
+          cp registry.json public/registry.json
+
+      - name: Upload registry artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: registry-json
+          path: public/registry.json
+          if-no-files-found: error
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  publish:
+    name: Publish registry to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}registry.json
+    steps:
+      - name: Deploy registry
+        id: deployment
+        uses: actions/deploy-pages@v4
