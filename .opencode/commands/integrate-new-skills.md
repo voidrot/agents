@@ -7,6 +7,11 @@ description: Create per-skill update plans for newly added skills before integra
 Audit newly added skills and create implementation plans. Do not move, delete,
 merge, or rewrite skill files during this command.
 
+## Relevant Skills
+
+- Use @skill-authoring for skill structure, frontmatter, naming, progressive disclosure, and support-file standards.
+- Use @documentation-writer when plan output needs clearer technical documentation structure.
+
 ## Input
 
 - Default source directory: `skills/.to-sort/`

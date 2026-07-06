@@ -1,9 +1,19 @@
 ---
 description: "Orchestrate comprehensive multi-dimensional code review using specialized review agents across architecture, security, performance, testing, and best practices"
-argument-hint: "<target path or description> [--security-focus] [--performance-critical] [--strict-mode] [--framework react|spring|django|rails]"
 ---
 
 # Comprehensive Code Review Orchestrator
+
+## Arguments
+
+Expected input: `<target path or description> [--security-focus] [--performance-critical] [--strict-mode] [--framework react|spring|django|rails]`
+
+## Relevant Skills
+
+- Use @code-review-excellence for review standards, defect detection, and constructive engineering feedback.
+- Use @security-review when `--security-focus` is present or the target handles auth, secrets, permissions, or user data.
+- Use @production-audit when reviewing rollout, deployment, reliability, operational, or production-readiness risks.
+- Use @quality-playbook when the review needs a repeatable quality system, validation gates, or spec-traced testing.
 
 ## CRITICAL BEHAVIORAL RULES
 

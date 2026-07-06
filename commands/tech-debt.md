@@ -1,6 +1,17 @@
+---
+description: Identify, quantify, prioritize, and plan remediation for technical debt across code, architecture, tests, dependencies, and docs.
+---
+
 # Technical Debt Analysis and Remediation
 
 You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create actionable remediation plans.
+
+## Relevant Skills
+
+- Use @improve-codebase-architecture for shallow modules, poor seams, testability friction, and architecture debt candidates.
+- Use @repo-scan for large-repository inventory, dead weight, generated assets, and ownership risk classification.
+- Use @quality-playbook when technical debt remediation needs durable quality gates and review protocols.
+- Use @production-audit when debt creates production readiness, deployment, reliability, or operational risk.
 
 ## Context
 
