@@ -1,5 +1,6 @@
 ---
 description: "Orchestrate comprehensive multi-dimensional code review using specialized review agents across architecture, security, performance, testing, and best practices"
+model: openai/gpt-5.5
 ---
 
 # Comprehensive Code Review Orchestrator

@@ -1,5 +1,6 @@
 ---
 description: Identify, quantify, prioritize, and plan remediation for technical debt across code, architecture, tests, dependencies, and docs.
+model: openai/gpt-5.5
 ---
 
 # Technical Debt Analysis and Remediation

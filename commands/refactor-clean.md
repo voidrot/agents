@@ -1,5 +1,6 @@
 ---
 description: Refactor code for clarity, maintainability, testability, and simpler design without changing behavior.
+model: openai/gpt-5.5
 ---
 
 # Refactor and Clean Code

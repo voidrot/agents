@@ -1,5 +1,6 @@
 ---
 description: Audit project dependencies for vulnerabilities, outdated packages, license conflicts, and supply chain risks — then provide actionable remediation strategies.
+model: openai/gpt-5.4-mini
 ---
 
 # Dependency Audit and Security Analysis

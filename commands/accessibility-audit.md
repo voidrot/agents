@@ -1,5 +1,6 @@
 ---
 description: Audit a product or codebase for accessibility barriers and WCAG compliance, then produce prioritized remediation guidance.
+model: openai/gpt-5.5
 ---
 
 # Accessibility Audit and Testing

@@ -1,5 +1,6 @@
 ---
 description: Generate accurate project, API, architecture, user, or code documentation from source analysis and user requirements.
+model: openai/gpt-5.4-mini
 ---
 
 # Automated Documentation Generation

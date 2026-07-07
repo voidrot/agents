@@ -1,5 +1,6 @@
 ---
 description: Explain complex code, algorithms, architecture, or patterns with clear analysis, diagrams, and progressive examples.
+model: openai/gpt-5.4
 ---
 
 # Code Explanation and Analysis
@@ -381,7 +382,7 @@ class AlgorithmVisualizer:
 │ │ │ │
 │ │ │ └─> Base case: Return 1
 │ │ │
-│ │ └─> Return: 1 _ 1 = 1
+│ │ └─> Return: 1_ 1 = 1
 │ │
 │ └─> Return: 2 _ 1 = 2
 │
@@ -565,23 +566,23 @@ classDiagram
     Singleton --> Singleton : returns same instance
 ````
 
-### Implementation in this code:
+### Implementation in this code
 
 {code_analysis}
 
-### Benefits:
+### Benefits
 
 ✅ Controlled access to single instance
 ✅ Reduced namespace pollution
 ✅ Permits refinement of operations
 
-### Drawbacks:
+### Drawbacks
 
 ❌ Can make unit testing difficult
 ❌ Violates Single Responsibility Principle
 ❌ Can hide dependencies
 
-### Alternative Approaches:
+### Alternative Approaches
 
 1. Dependency Injection
 2. Module-level singleton
@@ -601,7 +602,7 @@ The Observer pattern defines a one-to-many dependency between objects so that wh
 - Model-View architectures
 - Distributed event handling
 
-### Visual Representation:
+### Visual Representation
 
 ```mermaid
 classDiagram
@@ -628,11 +629,11 @@ classDiagram
     ConcreteObserver --> ConcreteSubject : observes
 ```
 
-### Implementation in this code:
+### Implementation in this code
 
 {code_analysis}
 
-### Real-world Example:
+### Real-world Example
 
 ```python
 # Newsletter subscription system

@@ -1,5 +1,6 @@
 ---
 description: Improve or create pull request descriptions, review context, test evidence, and reviewer-ready change summaries.
+model: openai/gpt-5.4-mini
 ---
 
 # Pull Request Enhancement
@@ -464,7 +465,7 @@ graph LR
     style E2 fill:#90EE90
 ````
 
-### Key Changes:
+### Key Changes
 
 1. Added caching layer for performance
 2. Introduced API gateway for better routing

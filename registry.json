@@ -56,6 +56,11 @@
       "source": "skills/design/design-system-patterns"
     },
     {
+      "name": "extract-design-md",
+      "description": "Use this skill to extract a DESIGN.md design system directly from frontend source code when a user wants to audit, document, migrate, or understand an app's visual language without relying on a rendered build.",
+      "source": "skills/design/extract-design-md"
+    },
+    {
       "name": "interaction-design",
       "description": "Use when designing or implementing microinteractions, feedback, motion, transitions, gestures, loading states, empty states, or interaction polish for user-facing interfaces.",
       "source": "skills/design/interaction-design"

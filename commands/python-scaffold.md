@@ -1,5 +1,6 @@
 ---
 description: Scaffold production-ready Python projects with modern structure, tooling, packaging, typing, tests, and framework conventions.
+model: openai/gpt-5.4-mini
 ---
 
 # Python Project Scaffolding
@@ -304,24 +305,24 @@ SECRET_KEY="your-secret-key-here"
 .PHONY: install dev test lint format clean
 
 install:
-	uv sync
+ uv sync
 
 dev:
-	uv run uvicorn src.project_name.main:app --reload
+ uv run uvicorn src.project_name.main:app --reload
 
 test:
-	uv run pytest -v
+ uv run pytest -v
 
 lint:
-	uv run ruff check .
+ uv run ruff check .
 
 format:
-	uv run ruff format .
+ uv run ruff format .
 
 clean:
-	find . -type d -name __pycache__ -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
-	rm -rf .pytest_cache .ruff_cache
+ find . -type d -name __pycache__ -exec rm -rf {} +
+ find . -type f -name "*.pyc" -delete
+ rm -rf .pytest_cache .ruff_cache
 ```
 
 ## Output Format
