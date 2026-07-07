@@ -251,6 +251,31 @@
       "source": "skills/infrastructure/terraform-module-library"
     },
     {
+      "name": "terraspace-interconnect",
+      "description": "Use when wiring Terraspace stacks together with output() references, depends_on() ordering, mock outputs, or output-driven stack dependency graphs.",
+      "source": "skills/infrastructure/terraspace-interconnect"
+    },
+    {
+      "name": "terraspace-layering",
+      "description": "Use when configuring Terraspace tfvars precedence, environment-specific variables, config/stacks layering, backend expansion, or multi-region/account layering modes.",
+      "source": "skills/infrastructure/terraspace-layering"
+    },
+    {
+      "name": "terraspace-scaffold",
+      "description": "Use when creating Terraspace stacks or modules, choosing app/stacks versus app/modules, inspecting terraspace list, or preserving generated starter Terraform files.",
+      "source": "skills/infrastructure/terraspace-scaffold"
+    },
+    {
+      "name": "terraspace-secrets",
+      "description": "Use when retrieving AWS Secrets Manager or SSM Parameter Store values from Terraspace tfvars with aws_secret(), aws_ssm(), :ENV expansion, or expand: false.",
+      "source": "skills/infrastructure/terraspace-secrets"
+    },
+    {
+      "name": "terraspace-terrafile",
+      "description": "Use when declaring Terraspace Terrafile modules, running terraspace bundle/update, managing vendor/modules, Terrafile.lock, Git/registry sources, or module lookup conflicts.",
+      "source": "skills/infrastructure/terraspace-terrafile"
+    },
+    {
       "name": "acquire-codebase-knowledge",
       "description": "Use this skill when the user asks to map, document, or onboard into an existing codebase, especially repository-level architecture discovery and codebase knowledge capture.",
       "source": "skills/meta/acquire-codebase-knowledge"
