@@ -94,16 +94,20 @@ mapfile -d '' skill_dirs < <(
     | sort -z
 )
 
+status=0
+
 for skill_file in "${skill_dirs[@]}"; do
   skill_dir="$(dirname -- "$skill_file")"
   skill_name="$(basename -- "$skill_dir")"
-  link_path "$skill_dir" "$skill_dest" "$skill_name"
+  link_path "$skill_dir" "$skill_dest" "$skill_name" || status=1
 done
 
 for command_dir in "$repo_root/commands" "$repo_root/.opencode/commands"; do
   [[ -d "$command_dir" ]] || continue
 
   while IFS= read -r -d '' command_file; do
-    link_path "$command_file" "$command_dest" "$(basename -- "$command_file")"
+    link_path "$command_file" "$command_dest" "$(basename -- "$command_file")" || status=1
   done < <(find "$command_dir" -maxdepth 1 -type f -name '*.md' -print0 | sort -z)
 done
+
+exit "$status"
