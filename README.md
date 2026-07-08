@@ -1,24 +1,82 @@
 # Voidrot Agents
 
-Custom skills, agents, hooks, and plugins for opencode, plus a small installer CLI.
+Custom skills, commands, agents, hooks, and plugins for OpenCode.
 
-## CLI
+## How to use this repo
+
+Use this repository as a local source of reusable OpenCode assets.
+
+### 1. Link local assets into OpenCode
+
+For day-to-day local use, symlink the repo's skills and commands into the user-level OpenCode locations:
 
 ```sh
-npm install
-npm run build
-npx @voidrot/agents list
-npx @voidrot/agents install skill skill-authoring --scope project --project-dir .
+scripts/link-opencode-assets.sh --dry-run
+scripts/link-opencode-assets.sh
 ```
 
-The CLI reads `registry.json` and installs assets from `skills/`, `agents/`, `hooks/`, and `plugins/`.
+The link script installs:
 
-Install destinations:
+| Asset | Source | Destination |
+| --- | --- | --- |
+| Skills | `skills/*/*` | `~/.agents/skills/<skill-name>` |
+| Commands | `commands/*.md` and `.opencode/commands/*.md` | `~/.config/opencode/commands/<command-name>.md` |
 
-- Project: `<project-dir>/.opencode`
-- Global: `~/.config/opencode`
+Use `--force` only when you intentionally want to replace an existing non-matching path:
 
-Restart opencode after installing or replacing agents, skills, hooks, or plugins so discovery reloads the new files.
+```sh
+scripts/link-opencode-assets.sh --force
+```
+
+Restart OpenCode after linking or replacing skills, commands, agents, hooks, or plugins so discovery reloads the new files.
+
+### 2. Add or update assets
+
+- Add skills under `skills/<category>/<skill-name>/SKILL.md`.
+- Add commands under `commands/*.md` unless they are project-local OpenCode examples, which belong under `.opencode/commands/`.
+- Run `scripts/link-opencode-assets.sh --dry-run` before replacing existing local links.
+
+## Commands
+
+Commands are Markdown prompt files for OpenCode slash commands.
+
+Command locations:
+
+| Directory | Purpose | Link destination |
+| --- | --- | --- |
+| `commands/` | Shared commands intended for normal use | `~/.config/opencode/commands/` |
+| `.opencode/commands/` | Repo-local command examples or project-specific commands | `~/.config/opencode/commands/` |
+
+Each command file should use YAML frontmatter for OpenCode command metadata, followed by the command prompt body.
+
+Allowed frontmatter keys:
+
+- `description`
+- `agent`
+- `model`
+- `variant`
+- `subtask`
+
+Command bodies can reference repo skills with exact `@skill-name` entries. Skill names must match a skill directory that contains `SKILL.md` under `skills/` or `.agents/skills/`.
+
+Current shared commands:
+
+- `accessibility-audit.md`
+- `code-explain.md`
+- `create-conventional-commits.md`
+- `deps-audit.md`
+- `doc-generate.md`
+- `extract-design-md.md`
+- `full-review.md`
+- `new-branch.md`
+- `pr-enhance.md`
+- `python-scaffold.md`
+- `refactor-clean.md`
+- `tech-debt.md`
+
+Current repo-local command examples:
+
+- `integrate-new-skills.md`
 
 ## Agents
 
