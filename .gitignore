@@ -17,3 +17,6 @@ devenv.local.yaml
 
 # Local Python environments
 .venv/
+.ruff_cache/
+.ropeproject/
+.pytest_cache/
