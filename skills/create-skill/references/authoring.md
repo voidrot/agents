@@ -4,7 +4,19 @@ Read this before turning a task area into instructions, examples, references, or
 
 ## Start from evidence
 
-Collect representative tasks and artifacts: inputs, desired outputs, existing successful examples, error traces, user corrections, and project-specific constraints. Define one coherent job for the skill. If the job contains distinct workflows that activate independently, split them rather than making activation load unrelated material.
+Collect representative tasks and artifacts: inputs, desired outputs, existing successful examples, error traces, user corrections, and project-specific constraints. Inspect adjacent skill names and descriptions before defining one coherent job; adding a new skill is not automatically the right answer.
+
+## Set the right boundary
+
+Treat the skill like a well-scoped function:
+
+- **Split** when workflows are useful independently and materially differ in triggers, safety boundaries, tools, or validation.
+- **Merge** when trigger descriptions substantially overlap, the steps are normally used together, or separation repeatedly makes agents load several skills for one task.
+- Keep variants and rare branches in conditional references instead of creating top-level skills solely for each variant.
+- Keep atomic operations as tools or scripts; a skill explains when, why, and how to combine operations into an outcome.
+- Keep broad universal policy in the harness's global instruction layer; a skill should not become a second system prompt.
+
+Optimize for a small plausible candidate set at runtime. The research favors roughly one to three relevant skills for an ordinary task, but this is directional evidence—not a universal numerical rule. A large installed library needs retrieval or hierarchy so the model does not discriminate among many semantically similar descriptions at once.
 
 ## Turn evidence into usable instructions
 

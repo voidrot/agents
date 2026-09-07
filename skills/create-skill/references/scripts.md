@@ -23,7 +23,7 @@ Refuse to overwrite existing user files unless the caller makes an explicit, nar
 
 ## Bundled helpers
 
-The helpers in `../scripts/` require Python 3 and the standard library only. Run them from any working directory by passing an explicit skill path. `scaffold_skill.py` creates `SKILL.md` and `references/authoring.md` only in a nonexistent or empty target; it cleans up artifacts from a failed write and refuses a non-empty target. `validate_skill.py` reads the target without modifying it. Both provide `--help`, use `--json` for a structured stdout result, and send diagnostics to stderr.
+The helpers in `../scripts/` require Python 3 and the standard library only. Run them from any working directory by passing an explicit skill path. `scaffold_skill.py` creates only `SKILL.md` in a nonexistent or empty target; add `references/`, `scripts/`, or `assets/` later only when evidence justifies them. It cleans up artifacts from a failed write and refuses a non-empty target. `validate_skill.py` reads the target without modifying it. Both provide `--help`, use `--json` for a structured stdout result, and send diagnostics to stderr.
 
 Exit codes are `0` for success, `1` for validation or filesystem failure, `2` for command-line usage, `3` when scaffolding refuses an unsafe target, and `4` for an invalid scaffold name or description.
 

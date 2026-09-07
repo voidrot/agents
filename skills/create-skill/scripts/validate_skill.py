@@ -222,12 +222,7 @@ def parse_frontmatter(skill_md: Path, diagnostics: list[Diagnostic]) -> dict[str
 
 
 def valid_name(name: str) -> bool:
-    if not 1 <= len(name) <= 64 or name.startswith("-") or name.endswith("-") or "--" in name:
-        return False
-    return all(
-        char == "-" or (char.isalnum() and (not char.isalpha() or char == char.lower()))
-        for char in name
-    )
+    return bool(re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name)) and len(name) <= 64
 
 
 def is_external(destination: str) -> bool:
@@ -303,12 +298,12 @@ def validate(root: Path) -> list[Diagnostic]:
     name = fields.get("name")
     if name and name.value is not None:
         if not valid_name(name.value):
-            add(diagnostics, "name", "name does not meet the required lowercase Unicode/hyphen format", skill_md)
+            add(diagnostics, "name", "name must use 1–64 ASCII lowercase letters, numbers, or hyphens in kebab-case", skill_md)
         if name.value != root.name:
             add(diagnostics, "name-directory", "name must exactly match the parent directory name", skill_md)
     description = fields.get("description")
     if description and description.value is not None and (not description.value.strip() or len(description.value) > 1024):
-        add(diagnostics, "description", "description must contain 1–1024 non-whitespace characters", skill_md)
+        add(diagnostics, "description", "description must be 1–1024 characters and not all whitespace", skill_md)
     for optional in ("license", "compatibility", "allowed-tools"):
         field = fields.get(optional)
         if field and (not field.supported or field.value is None):

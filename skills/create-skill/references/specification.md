@@ -6,8 +6,10 @@ Read this before creating a skill directory, editing frontmatter, or treating a 
 
 An Agent Skill is a directory containing `SKILL.md`. Its YAML frontmatter must include:
 
-- `name`: 1–64 characters; lowercase Unicode letters, numbers, and hyphens only; no leading, trailing, or consecutive hyphens; exactly matches the parent directory name.
-- `description`: a non-empty string of 1–1024 characters.
+- `name`: 1–64 ASCII lowercase letters, numbers, and hyphens only; no leading, trailing, or consecutive hyphens; exactly matches the parent directory name.
+- `description`: 1–1024 characters and not all whitespace.
+
+The bundled validator enforces the portable Agent Skills rule that `name` matches the directory. Some harnesses are more permissive—for example, Pi can load a mismatched name—but do not rely on that runtime exception when authoring a portable skill.
 
 The recognized optional frontmatter fields are `license`, `compatibility` (at most 500 characters), string-to-string `metadata`, and experimental `allowed-tools`.
 
@@ -31,7 +33,7 @@ Consumers first see metadata for discovery, then load `SKILL.md` when the skill 
 
 `../scripts/validate_skill.py` checks the required field limits and name shape, the stated `compatibility` limit, simple string-to-string metadata, and local Markdown destinations. It rejects a relative Markdown path that resolves outside the skill root and reports a missing local target.
 
-It deliberately uses Python's standard library rather than a YAML dependency. It supports ordinary top-level scalar fields, single-line quoted scalars, and indented `|`/`>` block scalars. It rejects or reports unsupported YAML constructs (including flow mappings/sequences, anchors, aliases, tags, multiline quoted scalars, and complex metadata) instead of guessing. Its Unicode name check is conservative: it accepts alphanumeric Unicode code points whose cased letters are lowercase, but may reject otherwise valid combining-character spellings. It is **not** parity with `skills-ref` or any official YAML parser. Run `uv run skill-eval validate SKILL_DIR --strict` when available for the repository's stricter validation.
+It deliberately uses Python's standard library rather than a YAML dependency. It supports ordinary top-level scalar fields, single-line quoted scalars, and indented `|`/`>` block scalars. It rejects or reports unsupported YAML constructs (including flow mappings/sequences, anchors, aliases, tags, multiline quoted scalars, and complex metadata) instead of guessing. Its name check intentionally uses the portable ASCII form. It is **not** parity with `skills-ref` or any official YAML parser. Run `uv run skill-eval validate SKILL_DIR --strict` when available for the repository's stricter validation.
 
 Markdown inspection covers ordinary inline and reference-definition links outside fenced code blocks. It ignores remote, anchor-only, and mail links. It is not a complete Markdown parser, so inspect unusual Markdown link syntax manually.
 

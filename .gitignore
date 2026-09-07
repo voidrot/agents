@@ -20,3 +20,4 @@ devenv.local.yaml
 .ruff_cache/
 .ropeproject/
 .pytest_cache/
+old-only-use-as-reference/

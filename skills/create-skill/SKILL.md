@@ -9,9 +9,9 @@ Build a small, evidence-based instruction package that helps an agent complete a
 
 ## Workflow
 
-1. **Ground the scope.** Inspect representative user tasks, inputs, outputs, failures, and existing project conventions. Define the skill's audience, trigger boundary, required tools, risks, and completion evidence. Exclude generic knowledge and unrelated workflows.
-2. **Choose the smallest useful structure.** Before creating or changing a skill directory or frontmatter, read [the structure reference](references/specification.md). Keep activation instructions in `SKILL.md`; put detailed material in one-level-deep `references/`, reusable deterministic operations in `scripts/`, and non-instruction artifacts in `assets/`.
-   - To start a *new* child skill safely, run `python3 scripts/scaffold_skill.py --help`, then use it only with an empty or nonexistent destination. Do not use it to revise an existing skill.
+1. **Ground the scope.** Inspect representative user tasks, inputs, outputs, failures, project conventions, and the names/descriptions of adjacent skills. Define the skill's audience, trigger boundary, required tools, risks, and completion evidence. Exclude generic knowledge and unrelated workflows. Merge with an existing skill when triggers substantially overlap or the workflows are normally used together; split only independently useful workflows with materially different triggers, safety boundaries, tools, or validation.
+2. **Choose the smallest useful structure.** Before creating or changing a skill directory or frontmatter, read [the structure reference](references/specification.md). Keep activation instructions in `SKILL.md`; add focused `references/`, deterministic `scripts/`, or non-instruction `assets/` only when the task evidence justifies them.
+   - To start a *new* child skill safely, run `python3 scripts/scaffold_skill.py --help`, then use it only with an empty or nonexistent destination. It creates only `SKILL.md`; add resources after they earn their cost. Do not use it to revise an existing skill.
 3. **Write for execution.** Give the agent an ordered, imperative procedure with decision points, safe defaults, verification, failure handling, and only the examples or templates that prevent likely mistakes. Calibrate how prescriptive it is to the cost of error. Read [authoring guidance](references/authoring.md) when selecting procedures, examples, or resource boundaries.
 4. **Engineer discovery deliberately.** Before writing or revising `description`, read [description optimization](references/descriptions.md). State both what the skill does and when it applies, using concrete task and domain terms—including likely implicit requests. Do not use the description as a keyword dump.
 5. **Add helpers only when justified.** Read [script design](references/scripts.md) before adding a helper. Use a script only for repeated deterministic work; otherwise give direct instructions. Keep it noninteractive, bounded, safe by default, and independently usable with `--help`.
@@ -22,7 +22,8 @@ Build a small, evidence-based instruction package that helps an agent complete a
 ## Completion checklist
 
 - [ ] The directory and frontmatter meet the formal requirements.
-- [ ] The description says what and when, with a bounded scope.
+- [ ] The description says what and when, with a bounded scope that does not unnecessarily overlap adjacent skills.
+- [ ] The skill is a coherent workflow—not a broad domain or atomic tool action—and normal requests need only a small plausible candidate set.
 - [ ] Instructions cover real task decisions, verification, and meaningful failure modes.
 - [ ] Resources are necessary, relative, and reachable without leaving the skill root.
 - [ ] Helpers are deterministic and safe, or have been removed.

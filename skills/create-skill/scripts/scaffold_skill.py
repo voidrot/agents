@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import errno
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -14,13 +15,8 @@ EXIT_INVALID = 4
 
 
 def valid_name(name: str) -> bool:
-    """Apply the conservative name check also used by validate_skill.py."""
-    if not 1 <= len(name) <= 64 or name.startswith("-") or name.endswith("-") or "--" in name:
-        return False
-    return all(
-        char == "-" or (char.isalnum() and (not char.isalpha() or char == char.lower()))
-        for char in name
-    )
+    """Apply the portable ASCII name check also used by validate_skill.py."""
+    return bool(re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name)) and len(name) <= 64
 
 
 def yaml_quote(value: str) -> str:
@@ -52,7 +48,7 @@ def main() -> int:
     name = args.name or target.name
     if not valid_name(name):
         print(
-            "error: --name must be 1–64 lowercase Unicode letters/numbers/hyphens "
+            "error: --name must be 1–64 ASCII lowercase letters, numbers, or hyphens "
             "with no leading, trailing, or consecutive hyphens",
             file=sys.stderr,
         )
@@ -61,7 +57,7 @@ def main() -> int:
         print("error: target directory name must match --name", file=sys.stderr)
         return EXIT_INVALID
     if not args.description.strip() or len(args.description) > 1024:
-        print("error: --description must contain 1–1024 non-whitespace characters", file=sys.stderr)
+        print("error: --description must be 1–1024 characters and not all whitespace", file=sys.stderr)
         return EXIT_INVALID
     if target.exists() and not target.is_dir():
         print(f"error: target is not a directory: {target}", file=sys.stderr)
@@ -79,17 +75,7 @@ description: {yaml_quote(args.description)}
 
 ## Workflow
 
-1. Confirm the task is within this skill's scope.
-2. Perform the task-specific steps and verify the result.
-3. Report the result and any unresolved constraints.
-
-## Resources
-
-Read [authoring notes](references/authoring.md) only when detailed task guidance is needed.
-"""
-    notes_content = """# Authoring notes
-
-Add only task-specific facts, constraints, examples, and failure handling that an agent needs after activation.
+Replace this authoring note with the ordered, task-specific procedure. Include only non-obvious decisions, safe defaults, failure handling, and verification that the agent needs after activation.
 """
     missing_directories: list[Path] = []
     cursor = target
@@ -97,25 +83,13 @@ Add only task-specific facts, constraints, examples, and failure handling that a
         missing_directories.append(cursor)
         cursor = cursor.parent
 
-    references = target / "references"
     skill_file = target / "SKILL.md"
-    notes_file = references / "authoring.md"
     skill_temporary = target / ".SKILL.md.tmp"
-    notes_temporary = references / ".authoring.md.tmp"
-    generated_files = (
-        skill_temporary,
-        notes_temporary,
-        skill_file,
-        notes_file,
-    )
+    generated_files = (skill_temporary, skill_file)
     try:
         target.mkdir(parents=True, exist_ok=True)
-        references.mkdir()
         with skill_temporary.open("x", encoding="utf-8") as output:
             output.write(skill_md)
-        with notes_temporary.open("x", encoding="utf-8") as output:
-            output.write(notes_content)
-        notes_temporary.replace(notes_file)
         skill_temporary.replace(skill_file)
     except OSError as error:
         cleanup_errors: list[str] = []
@@ -124,7 +98,7 @@ Add only task-specific facts, constraints, examples, and failure handling that a
                 path.unlink(missing_ok=True)
             except OSError as cleanup_error:
                 cleanup_errors.append(f"{path}: {cleanup_error}")
-        for path in [references, *missing_directories]:
+        for path in missing_directories:
             try:
                 path.rmdir()
             except OSError as cleanup_error:
@@ -135,7 +109,7 @@ Add only task-specific facts, constraints, examples, and failure handling that a
             print(f"error: cleanup failed: {cleanup_error}", file=sys.stderr)
         return 1
 
-    emit(str(target), name, ["SKILL.md", "references/authoring.md"], args.json)
+    emit(str(target), name, ["SKILL.md"], args.json)
     return 0
 
 
