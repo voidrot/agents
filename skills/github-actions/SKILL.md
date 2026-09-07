@@ -9,7 +9,7 @@ Create and repair GitHub Actions configuration with a deliberate trust boundary,
 
 Choose action refs in this order: an explicit user ref takes precedence; otherwise follow a documented repository convention; otherwise follow a clear majority among comparable external action refs in workflows and local composite actions. Exclude local action uses and reusable-workflow refs from that tally. If the majority uses full-length SHAs, use a verified upstream commit for the latest stable release; if moving major tags are standard, use `@vN`. With no clear convention, including a mixed repository, default to the moving latest stable major tag and explain the choice rather than normalizing unrelated refs. A moving tag can change and is not an immutable security guarantee; a convention-selected SHA must be the verified stable-release commit, not `main` HEAD or a stale runtime.
 
-When adding or updating an action, verify and use its latest stable major from the official upstream releases. If the current workflow is incompatible, tell the user and propose the required adoption changes; never silently retain the old major or guess when the latest release is unavailable. An explicit user version override is honored, and unrelated actions are not auto-updated.
+When adding or updating an action, verify and use its latest stable major from the official upstream releases. When determining the latest stable version or a release SHA, prefer the `gh` CLI or GitHub MCP if available; if neither is available, fall back to available search tooling. Verify release/commit provenance and never guess when the latest release is unavailable. If the current workflow is incompatible, tell the user and propose the required adoption changes; never silently retain the old major. An explicit user version override is honored, and unrelated actions are not auto-updated.
 
 ## Workflow
 
@@ -36,7 +36,7 @@ When adding or updating an action, verify and use its latest stable major from t
      | `number` | A numeric value, such as a retry count or version component, when the workflow consumes it numerically. |
      | `environment` | A deployment target that must be selected from repository environments and use their associated protection rules or secrets. |
 
-     Do not model `boolean`, `environment`, or finite `choice` inputs as `string` values and add workflow steps solely to validate the selection. Use explicit validation only for missing, unsupported, or semantic constraints that the declared input type cannot express.
+     Do not model `boolean` or finite `choice` inputs as `string` values and add workflow steps solely to validate the selection. Use explicit validation only for missing, unsupported, or semantic constraints that the declared input type cannot express.
    - Keep diagnostic output targeted. Use documented annotations, summaries, and environment files rather than dumping contexts or event payloads.
 
 4. **Validate from syntax to execution.**
