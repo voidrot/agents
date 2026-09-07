@@ -36,7 +36,7 @@ When adding or updating an action, verify and use its latest stable major from t
      | `number` | A numeric value, such as a retry count or version component, when the workflow consumes it numerically. |
      | `environment` | A deployment target that must be selected from repository environments and use their associated protection rules or secrets. |
 
-     Do not model `boolean` or finite `choice` inputs as `string` values and add workflow steps solely to validate the selection. Use explicit validation only for missing, unsupported, or semantic constraints that the declared input type cannot express.
+     Do not model `boolean`, `environment`, or finite `choice` inputs as `string` values and add workflow steps solely to validate the selection. Use explicit validation only for missing, unsupported, or semantic constraints that the declared input type cannot express.
    - Keep diagnostic output targeted. Use documented annotations, summaries, and environment files rather than dumping contexts or event payloads.
 
 4. **Validate from syntax to execution.**
