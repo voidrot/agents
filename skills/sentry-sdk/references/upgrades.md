@@ -1,0 +1,9 @@
+# SDK upgrades
+
+1. Inventory every Sentry package/module, locked version, runtime/framework, initialization site, build plugin, artifact tooling, and OTel provider. Read the selected platform's current install page and release/migration notes before choosing a target; do not assume a latest version, command, or migration API.
+2. Upgrade related official SDK packages as a compatible set according to current docs. Do not replace framework SDKs with generic packages merely to resolve a dependency conflict.
+3. Search for deprecated imports, initialization/options, integrations, middleware, startup/preload order, and artifact build hooks. Apply only migrations confirmed for the exact source/target versions and runtime.
+4. Recheck privacy/sampling defaults explicitly after a major upgrade. Build artifacts from the upgraded shipping build and do not upload them without authorization.
+5. Run formatter/type/lint/unit/integration/build checks. With authorization, send a controlled event and trace; compare runtime, error capture, artifact readability, and duplicate telemetry against the pre-upgrade expectation. Roll back the code/dependency change if these regressions cannot be resolved.
+
+Legacy version-to-version recipes are intentionally not reproduced because exact migrations age quickly. Current SDK docs govern: [JavaScript](https://docs.sentry.io/platforms/javascript/), [Android](https://docs.sentry.io/platforms/android/), [Python](https://docs.sentry.io/platforms/python/), [Go](https://docs.sentry.io/platforms/go/), [Flutter](https://docs.sentry.io/platforms/dart/guides/flutter/), and [React Native](https://docs.sentry.io/platforms/react-native/).
