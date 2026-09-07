@@ -26,7 +26,17 @@ When adding or updating an action, verify and use its latest stable major from t
 
 3. **Make the change explicit and reviewable.**
    - Keep event filters, job dependencies, conditionals, concurrency, permissions, inputs, outputs, shells, and runner labels narrow and visible. Do not add secrets, broad tokens, self-hosted runners, caches, matrices, reusable components, or deployment gates without a current need. For manual dispatch, preserve the selected branch/tag and verify its resolved commit before security-sensitive or shared-environment side effects; do not silently substitute the default branch or another SHA.
-   - Give unsupported, missing, or invalid action input an explicit failure path. Do not rely on metadata alone to enforce it.
+   - Route each `workflow_dispatch` input to its narrowest suitable type:
+
+     | Type | Use case |
+     | --- | --- |
+     | `string` | Free-form text, such as a release note, branch name, or identifier whose values cannot be enumerated. |
+     | `boolean` | A true/false toggle, such as whether to run an optional non-destructive step. |
+     | `choice` | One selection from a fixed finite list; declare the allowed `options`. |
+     | `number` | A numeric value, such as a retry count or version component, when the workflow consumes it numerically. |
+     | `environment` | A deployment target that must be selected from repository environments and use their associated protection rules or secrets. |
+
+     Do not model `boolean`, `environment`, or finite `choice` inputs as `string` values and add workflow steps solely to validate the selection. Use explicit validation only for missing, unsupported, or semantic constraints that the declared input type cannot express.
    - Keep diagnostic output targeted. Use documented annotations, summaries, and environment files rather than dumping contexts or event payloads.
 
 4. **Validate from syntax to execution.**
