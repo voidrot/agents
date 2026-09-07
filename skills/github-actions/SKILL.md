@@ -26,6 +26,7 @@ When adding or updating an action, verify and use its latest stable major from t
 
 3. **Make the change explicit and reviewable.**
    - Keep event filters, job dependencies, conditionals, concurrency, permissions, inputs, outputs, shells, and runner labels narrow and visible. Do not add secrets, broad tokens, self-hosted runners, caches, matrices, reusable components, or deployment gates without a current need. For manual dispatch, preserve the selected branch/tag and verify its resolved commit before security-sensitive or shared-environment side effects; do not silently substitute the default branch or another SHA.
+   - Keep workflow YAML focused on orchestration. Put non-trivial or multi-line shell, JavaScript, Python, or other implementation logic in a versioned script under `.github/scripts/`, then invoke that script from the workflow with explicit arguments and environment inputs. A short, transparent setup command may remain inline; do not embed large `run:` blocks merely to avoid creating a script. Keep scripts narrowly scoped, validate untrusted inputs, and avoid passing secrets on command lines.
    - Route each `workflow_dispatch` input to its narrowest suitable type:
 
      | Type | Use case |
