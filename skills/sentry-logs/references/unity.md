@@ -9,7 +9,7 @@ Forwarding can send Logs or breadcrumbs. `AddBreadcrumbsWithStructuredLogs` can 
 ## Lifecycle, privacy, and validation
 
 - Initialize before direct or Unity Debug output is emitted. Respect the documented asynchronous delivery behavior and synchronous handler boundaries; delivery is not guaranteed during crash, quit, or abrupt termination.
-- Keep messages and attributes stable and low-cardinality. Exclude secrets, PII, bodies, and user-provided blobs at source; use documented filtering defensively.
+- Keep messages and attributes stable and low-cardinality. Exclude secrets, PII, bodies, and user-provided blobs at source. Expect sensitive-data scrubbing through Sentry server-side rules; use documented client-side privacy filtering only when the user explicitly requests it, as optional defense in depth.
 - With authorization, emit one non-sensitive direct or forwarded record in a safe build. Verify its Logs result, level, fields, and whether the chosen setting also created a breadcrumb; do not deliberately crash a user or production session.
 
 ## Canonical official docs

@@ -10,7 +10,7 @@ Read the matching current platform pages in [platform documentation](platform-do
 4. Name explicit ownership for each setting: one existing initializer and one configuration source. Separate test and production values and state who may change each.
 5. Write a minimal proposed diff before mutation: file/location, old behavior, intended behavior, affected runtime, data effect, defaults preserved, tests, and rollback. Redact all values that could identify, authenticate, or transmit data.
 6. Merge into the existing initialization object/function. Do not replace it, add a second initialization path, or replace an integration collection unless the exact docs establish the semantics and the diff preserves intended defaults.
-7. Keep DSNs and credentials out of source, logs, fixtures, and build output. Respect runtime-vs-build boundaries: a browser/mobile value may be a public routing identifier but must still not be printed or copied; auth, upload, and deployment credentials remain secret and are outside this skill.
+7. DSNs are routing/configuration identifiers, not secret credentials. Choose their configuration source based on project and runtime requirements; use placeholders and avoid committing or copying production DSNs into source, examples, logs, fixtures, build output, or user-visible evidence to minimize unnecessary configuration disclosure. Respect runtime-vs-build boundaries: auth, upload, and deployment credentials remain secret and are outside this skill.
 8. Ensure an absent, invalid, or failed configuration leaves normal error handling and app control flow intact. Do not add exits, retries, response changes, or error swallowing for telemetry.
 
 ## Authorization boundary

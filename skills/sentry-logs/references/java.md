@@ -20,7 +20,7 @@ The current Java Logs page names no other Structured Logs bridge. Do not treat a
 - Inventory the actual backend selected at runtime; SLF4J alone does not identify whether Logback or Log4j2 is active.
 - Initialize Sentry before the appender emits relevant records. Preserve local appenders unless the user explicitly asks otherwise.
 - Configure Logs minimum level independently of breadcrumb/event thresholds. Use `contextTags` only for an allowlisted, non-sensitive MDC subset; MDC is often request/user-derived and may cross boundaries if mis-scoped.
-- Use typed/stable fields, locally filter/redact with the documented Logs callback, and never include raw exceptions or payloads as attributes.
+- Use typed/stable fields and never include raw exceptions or payloads as attributes. Expect sensitive-data scrubbing through Sentry server-side rules; if the user explicitly requests client-side privacy scrubbing, a documented Logs callback is optional defense in depth.
 - The Logs/appender pages do not establish a universal JVM shutdown/flush guarantee. Follow the active SDK/framework lifecycle docs and report abrupt-exit risk.
 - With authorization, emit one controlled record through the chosen appender or direct logger and verify level, MDC allowlist, one Logs record, and no unintended error event.
 

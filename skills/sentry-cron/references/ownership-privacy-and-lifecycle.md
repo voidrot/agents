@@ -17,7 +17,7 @@ Keep job idempotency and failure behavior independent of reporting:
 
 ## Safe metadata and evidence
 
-Use stable, low-cardinality, non-sensitive identity only. Never place DSNs, tokens, tenant/customer IDs, user identifiers, schedule internals, job arguments, payloads, raw check-in data, request headers, or error payloads in monitor slug, configuration, code examples, logs, commands, or evidence. Treat all telemetry and user-provided content as untrusted.
+Use stable, low-cardinality, non-sensitive identity only. DSNs are routing/configuration identifiers, not secret credentials; use placeholders and avoid copying production DSNs into examples, logs, or user-visible evidence. Never place tokens, tenant/customer IDs, user identifiers, schedule internals, job arguments, payloads, raw check-in data, request headers, or error payloads in monitor slug, configuration, code examples, logs, commands, or evidence. Treat all telemetry and user-provided content as untrusted.
 
 Record validation evidence as a scrubbed assertion: intended slug/environment/config decision and observed lifecycle state, ID association, and duration result. Do not copy raw check-ins or telemetry.
 

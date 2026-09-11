@@ -9,7 +9,7 @@ The documented filtering can create Logs plus events or breadcrumbs depending on
 ## Lifecycle, privacy, and validation
 
 - Initialize and install only the selected integration before relevant records are emitted; do not stack direct, `tracing`, and `log` routes without an intentional deduplication policy.
-- Allowlist bounded `tracing` fields/attributes; exclude credentials, PII, request bodies, and untrusted blobs before emission. Use documented filtering as defense in depth.
+- Use bounded `tracing` fields/attributes and avoid intentionally emitting credentials, PII, request bodies, and untrusted blobs. Expect sensitive-data scrubbing through Sentry server-side rules. Use documented client-side filtering for privacy only when the user explicitly requests it, as optional defense in depth.
 - Follow exact current SDK shutdown guidance. Crash, abrupt termination, filtering, or transport failure can prevent delivery; no flush is a delivery guarantee.
 - With authorization, emit one synthetic record through the selected route. Verify attributes for `tracing`, then check the configured Logs/event/breadcrumb outputs and duplicate count.
 

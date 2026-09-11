@@ -39,7 +39,7 @@ Enable SDK diagnostics only when needed and authorized if it changes configurati
 
 | Symptom | First checks |
 |---|---|
-| No error event | Exact runtime docs; SDK initialized before failure; DSN presence without printing it; disabled integration/filter; boundary consumes error; lifecycle ends before handoff; network policy. |
+| No error event | Exact runtime docs; SDK initialized before failure; DSN presence without printing it (a DSN is a routing/configuration identifier, not a secret credential); disabled integration/filter; boundary consumes error; lifecycle ends before handoff; network policy. |
 | Message/Log exists but no exception event | Code used logger/message/breadcrumb instead of exception capture; verify the event API and preserve the original exception. |
 | Duplicate events | Manual capture plus rethrow; nested/overlapping boundaries; client plus server; native plus managed bridge; dev double invocation; repeated retries. Assign one owner. |
 | Missing stack or cause | Stringified/reconstructed exception; missing explicit stack where the exact SDK requires one; wrapping lost cause; non-Error throw; mismatched source map/debug symbol prerequisite. |

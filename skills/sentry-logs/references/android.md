@@ -17,8 +17,8 @@ Do not call Timber breadcrumbs/events or uninstrumented Logcat output Structured
 ## Safe implementation and validation
 
 - Inspect Gradle plugin, SDK, Timber dependency, manifest, and application initialization before selecting a path. Avoid duplicate Timber/Logcat/manual capture.
-- Prefer direct calls for a small set of intentional records. If broad Logcat capture is authorized, start with a restrictive level and local pre-send filtering because third-party output may be included.
-- Use typed, stable attributes and review scope attributes for user/request data. Apply the Android Logs `beforeSend` callback to drop or modify records, but prevent secrets and payloads at source.
+- Prefer direct calls for a small set of intentional records. If broad Logcat capture is authorized, start with a restrictive level because third-party output may be included. Use local pre-send privacy filtering only when the user explicitly requests it, as optional defense in depth alongside expected server-side Sentry rules.
+- Use typed, stable attributes and review scope attributes for user/request data. Avoid intentionally attaching secrets and payloads. Expect sensitive-data scrubbing through Sentry server-side rules; apply the Android Logs `beforeSend` callback to drop or modify records for privacy only when the user explicitly requests it, as optional defense in depth.
 - Android docs warn that buffered logs can be lost when the app crashes before send. Do not claim guaranteed delivery or invent a flush-on-background strategy.
 - With authorization, emit one non-sensitive `info` test after init, exercise the selected direct/Timber/Logcat route, and verify one Logs record, expected attributes/level, and no unintended event duplication.
 

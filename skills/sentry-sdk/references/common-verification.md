@@ -3,7 +3,7 @@
 ## Local checks first
 
 1. Confirm exactly one supported initialization path per runtime and that it runs before the application/framework code it must observe.
-2. Confirm the DSN/configuration is supplied by the approved environment/config mechanism and is absent from tracked files and logs.
+2. Confirm the DSN/configuration is supplied by the project's approved environment/config mechanism. DSNs are routing/configuration identifiers, not secret credentials; avoid committing or copying production DSNs into tracked files, logs, or user-visible evidence.
 3. Run the repository's formatter, type/lint checks, unit tests, and production-equivalent build where available. Inspect generated bundles/binaries and artifact output locally; do not upload them without authorization.
 4. Check that error middleware/boundaries preserve the framework's normal error behavior, and that only one tracing provider owns tracing setup. Check release/environment/build identity agrees with the artifact-producing build.
 
@@ -13,7 +13,7 @@ State what event will be sent and what non-sensitive fields it contains. Trigger
 
 ## Temporary diagnostics
 
-Use the current SDK's documented diagnostic logging only in a controlled environment, avoid printing DSNs/tokens/event payloads, and remove or restore it after diagnosis. Do not leave broad capture, elevated sampling, debug logs, or test triggers enabled.
+Use the current SDK's documented diagnostic logging only in a controlled environment, use placeholders rather than printing production DSNs, and never print tokens or event payloads; remove or restore it after diagnosis. Do not leave broad capture, elevated sampling, debug logs, or test triggers enabled.
 
 ## Triage order
 
@@ -21,6 +21,6 @@ Use the current SDK's documented diagnostic logging only in a controlled environ
 2. Duplicate event: duplicate initialization, overlapping middleware/boundaries, manual capture plus automatic capture, or retry behavior.
 3. Missing trace: competing tracing provider, unsupported integration, propagation/allowed-target configuration, or sampling.
 4. Unreadable frames: inspect artifacts and build identity; compare release/dist/debug identifiers and artifact URLs/paths before any authorized re-upload.
-5. Unexpected data: stop further test events, remove the field at the earliest safe point, and escalate product-side data handling to an authorized administrator.
+5. Unexpected data: stop further test events, avoid intentionally attaching the field, and escalate server-side Sentry scrubbing-rule confirmation or configuration to an authorized administrator. Do not silently add client-side redaction; it is optional defense in depth only when explicitly requested.
 
 Use the selected official platform guide for its current diagnostic and verification behavior. JavaScript source-map guidance: <https://docs.sentry.io/platforms/javascript/sourcemaps/>.

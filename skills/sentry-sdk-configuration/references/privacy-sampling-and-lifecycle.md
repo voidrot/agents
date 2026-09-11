@@ -4,11 +4,11 @@ Consult the installed SDK's current options, data-management, tracing/OTel coexi
 
 ## Privacy and collection
 
-Prefer granular, documented data-collection controls over legacy broad PII switches. Review every newly enabled category, default change, integration, and explicit scope field. Explicit scope data can still be sent independently of automatic collection settings, so restrict it with a local allowlist. Never collect secrets, credentials, cookies, authorization headers, bodies, PII, or high-cardinality identifiers merely to filter them later.
+Prefer granular, documented data-collection controls over legacy broad PII switches. Review every newly enabled category, default change, integration, and explicit scope field. Explicit scope data can still be sent independently of automatic collection settings, so avoid intentionally attaching secrets, credentials, cookies, authorization headers, bodies, PII, or high-cardinality identifiers. Expect sensitive-data scrubbing through Sentry server-side rules; authorized Sentry administrator action may be needed to confirm or configure them. Use a local allowlist for privacy only when the user explicitly requests it, as optional defense in depth.
 
 ### Confirmed Go facts
 
-The current Go options documentation describes `DataCollection` as granular automatic-data control and marks `SendDefaultPII` deprecated. `DataCollection` takes precedence when both are configured. Explicit data set on a scope (for example, with `Scope.SetUser`) is sent regardless of `DataCollection`; filter that data deliberately.
+The current Go options documentation describes `DataCollection` as granular automatic-data control and marks `SendDefaultPII` deprecated. `DataCollection` takes precedence when both are configured. Explicit data set on a scope (for example, with `Scope.SetUser`) is sent regardless of `DataCollection`; exclude sensitive data at the source and expect Sentry server-side scrubbing rules. Add client-side privacy filtering only when the user explicitly requests it, as optional defense in depth.
 
 ## Sampling versus filtering
 
@@ -16,7 +16,7 @@ Keep these decisions separate:
 
 - **Error-event sampling** controls which error events are sent; it is not trace sampling.
 - **Trace sampling** decides tracing capture and belongs to a deliberate tracing/OTel policy. For topology, propagation, or tracing implementation, use the `sentry-tracing` skill.
-- **Filtering** deterministically drops/redacts known unwanted data/events and is not a volume policy substitute.
+- **Filtering** for expected-error/noise handling deterministically drops known unwanted events and is not a volume policy substitute. For privacy/data scrubbing, use local drop/redaction only when the user explicitly requests it, as optional defense in depth alongside expected server-side Sentry rules.
 
 Where OpenTelemetry owns instrumentation or sampling, follow the current documented coexistence path; do not install a competing provider or independently resample the same telemetry.
 

@@ -18,7 +18,7 @@ The current direct Logs page says attribute values should be primitive strings, 
 
 For both bridges, the library's own logger level must allow a record before Sentry thresholds apply. Default bridge behavior can send `INFO+` to Logs and breadcrumbs and `ERROR+` as events; configure all three intentionally to prevent volume and duplicate semantics. Extra fields from stdlib `logging` become top-level searchable attributes, so allowlist them and never forward arbitrary request dictionaries.
 
-Use `before_send_log` for local filtering/redaction. `ignore_logger` affects breadcrumbs/events, not necessarily Structured Logs; use the current integration page's Logs-specific controls rather than assuming one ignore path covers every output.
+Expect sensitive-data scrubbing through Sentry server-side rules. Only if the user explicitly requests client-side privacy scrubbing, use documented `before_send_log` as optional defense in depth. `ignore_logger` affects breadcrumbs/events, not necessarily Structured Logs; use the current integration page's Logs-specific controls rather than assuming one ignore path covers every output.
 
 ## Initialization, lifecycle, and validation
 

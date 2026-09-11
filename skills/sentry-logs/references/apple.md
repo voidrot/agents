@@ -9,7 +9,7 @@ Use Logs for standalone searchable structured records, not as a replacement for 
 ## Data, lifecycle, and validation
 
 - Keep messages stable and attributes bounded; exclude secrets, PII, request/response bodies, and user-controlled blobs before calling the logger.
-- Use the page's pre-send filtering hook as defense in depth, not as the primary privacy control.
+- Expect sensitive-data scrubbing through Sentry server-side rules. Use the page's pre-send filtering hook for privacy only when the user explicitly requests it, as optional defense in depth.
 - The page warns that a crash can occur before logs are delivered. Follow only documented lifecycle behavior; no flush or retry is a delivery guarantee.
 - With authorization, emit one non-sensitive direct record after initialization and verify one Logs record, its level and attributes, and that it did not instead appear only as a breadcrumb or event.
 

@@ -15,7 +15,7 @@ No other React Native logging-library adapter is named on the current Logs page.
 ## Mobile safety and lifecycle
 
 - Inventory SDK version and default Console capture before adding an integration. Otherwise direct calls and auto-Console can duplicate records or unexpectedly ship existing console output.
-- Prefer direct logging. If Console/Consola capture is authorized, allowlist levels and use `beforeSendLog`; development console traffic and dependency messages can be noisy or sensitive.
+- Prefer direct logging. If Console/Consola capture is authorized, allowlist levels; development console traffic and dependency messages can be noisy or sensitive. Expect sensitive-data scrubbing through Sentry server-side rules. Use `beforeSendLog` for privacy only when the user explicitly requests it, as optional defense in depth.
 - Current docs say only string, number, and boolean attribute values are supported for the documented scope behavior. Avoid navigation params, device/user objects, errors, request data, tokens, and payloads. Clear user/session state at logout.
 - The React Native page explicitly warns that logs can be lost when a crash terminates the app before the SDK sends them. App backgrounding, force-stop, offline state, and abrupt native termination are delivery risks; no universal flush guarantee is documented here.
 

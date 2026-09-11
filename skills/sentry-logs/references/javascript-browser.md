@@ -20,7 +20,7 @@ Page close, navigation, offline state, ad blockers, and abrupt termination can p
 
 ## Safe implementation and validation
 
-- Prefer direct calls over broad console interception. If console capture is selected, allowlist levels and filter third-party noise locally with `beforeSendLog`.
+- Prefer direct calls over broad console interception. If console capture is selected, allowlist levels for third-party noise. Use `beforeSendLog` for privacy scrubbing only when the user explicitly requests it, as optional defense in depth alongside expected server-side Sentry rules.
 - Use stable templates and documented values; current JS shared attributes accept strings, numbers, booleans, or arrays of these, but explicit per-log data should follow the exact installed SDK types. Never pass DOM objects, errors, auth state, URLs with query strings, or payloads.
 - Keep session/operation attributes on the narrowest scope and clear user state at logout.
 - With authorization, trigger one record after init, verify it in Logs by a synthetic correlation value, and check that console capture did not duplicate a direct call.

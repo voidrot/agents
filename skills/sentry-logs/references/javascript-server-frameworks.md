@@ -24,7 +24,7 @@ For JavaScript rows, Consola requires 10.12.0+ and console multiple-argument par
 
 ## Safe selection and validation
 
-Prefer direct calls for intentional records. A bridge is appropriate only for an existing listed library and must preserve existing local output. Allowlist levels and primitive/bounded attributes; filter secrets, request/response bodies, auth headers, raw URLs, and user text before send. Broad Console capture may ingest framework or dependency messages.
+Prefer direct calls for intentional records. A bridge is appropriate only for an existing listed library and must preserve existing local output. Allowlist levels and primitive/bounded attributes; avoid intentionally attaching secrets, request/response bodies, auth headers, raw URLs, and user text. Expect sensitive-data scrubbing through Sentry server-side rules. Broad Console capture may ingest framework or dependency messages; use a client-side privacy filter only when the user explicitly requests it, as optional defense in depth.
 
 With authorization, test each configured runtime independently using one synthetic correlation value plus a bounded `runtime` attribute. Verify the record came from the expected client/server/edge path and was not duplicated by direct plus Console/Pino/Winston capture. Do not treat a Winston/Pino error event or breadcrumb as proof of Logs ingestion.
 

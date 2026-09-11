@@ -10,7 +10,7 @@ Current Flutter docs confirm Sentry Structured Logs in `sentry_flutter` 9.0.0+ a
 
 - Initialize `SentryFlutter` before `runApp`/first log through the documented startup path. Check installed version before adding the opt-in switch; avoid asserting one default for every 9.x release.
 - Use typed, stable `SentryAttribute.string/int/double/bool` values shown by current docs. Do not pass widget state, exceptions, routes with user parameters, payloads, tokens, or arbitrary maps.
-- Keep operation/session scope narrow and clear user state on logout. Apply the page's `beforeSendLog` callback for bounded level filtering and defense-in-depth redaction.
+- Keep operation/session scope narrow and clear user state on logout. Keep bounded level filtering separate from privacy scrubbing. Expect sensitive-data scrubbing through Sentry server-side rules; apply the page's `beforeSendLog` callback for privacy only when the user explicitly requests it, as optional defense in depth.
 - The current page explicitly warns that logs can be lost when a crash terminates the app before send. It does not document a framework adapter or universal manual flush guarantee. Do not add speculative app-lifecycle flushes or claim next-restart delivery.
 
 ## Authorized validation

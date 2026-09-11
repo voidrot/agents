@@ -15,7 +15,7 @@ No PHP framework integration beyond Monolog is established by these cited docs.
 ## Lifecycle, privacy, and validation
 
 - For long-running CLI processes, use the PHP documentation's flush strategy at the appropriate controlled lifecycle boundary. Buffered work can still be lost; do not claim delivery is guaranteed.
-- Allowlist stable, low-cardinality fields and exclude credentials, PII, headers, and raw bodies before logging. Use documented local filtering where applicable.
+- Use stable, low-cardinality fields and avoid intentionally logging credentials, PII, headers, and raw bodies. Expect sensitive-data scrubbing through Sentry server-side rules. Use documented local filtering for privacy only if the user explicitly requests it, as optional defense in depth.
 - With authorization, send one synthetic direct or Monolog `LogsHandler` record and verify it is one Logs record with the expected fields—not merely a breadcrumb or event. Do not enable both handlers for the same source unless their outputs are deliberately separated.
 
 ## Canonical official docs

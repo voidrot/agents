@@ -16,13 +16,13 @@ Read the current platform enrichment/scope and options pages before choosing API
 | Tags | Small stable, low-cardinality query/filter dimensions | IDs, emails, raw URLs, messages, secrets |
 | Contexts | Bounded structured diagnostic state | Raw request objects, bodies, headers, arbitrary user input |
 | Extras | Small exceptional debugging details | PII, credentials, high-volume/unbounded data |
-| Breadcrumbs | Scrubbed, bounded lead-up context | Error-event replacement, raw network/auth/body data |
+| Breadcrumbs | Bounded lead-up context; avoid intentionally adding sensitive values and expect server-side Sentry scrubbing rules | Error-event replacement, raw network/auth/body data |
 
 Explicitly set scope data can bypass automatic-collection assumptions; apply the same allowlist and privacy policy to it.
 
 ## Filtering
 
-Use the exact platform's pre-send and breadcrumb filtering callbacks only after consulting its current docs. They are defense in depth, not a reason to collect sensitive material. Filter/drop or redact locally at the earliest practical boundary; prevent sensitive data at the call site too. Keep callbacks deterministic, bounded, exception-safe, and unable to affect application control flow. Do not rely on a product-side rule as the only protection.
+Avoid intentionally placing sensitive data in scope or at the call site. Expect sensitive-data scrubbing through Sentry server-side rules; confirming or configuring those rules may require authorized Sentry administrator action, and report it if unavailable. Only when the user explicitly requests client-side privacy scrubbing, use the exact platform's pre-send and breadcrumb callbacks as optional defense in depth. Keep any such callback deterministic, bounded, exception-safe, and unable to affect application control flow.
 
 ## Sources
 

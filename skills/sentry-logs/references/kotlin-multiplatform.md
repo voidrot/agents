@@ -9,7 +9,7 @@ Logs are standalone searchable records, not breadcrumbs or error events. Keep ex
 ## Data, lifecycle, and validation
 
 - Use stable required messages and bounded attributes; exclude secrets, PII, headers, bodies, and untrusted user data before logging.
-- Use the documented `beforeSend` filtering as defense in depth, not as the primary privacy boundary.
+- Expect sensitive-data scrubbing through Sentry server-side rules. Use documented `beforeSend` filtering for privacy only when the user explicitly requests it, as optional defense in depth.
 - The page warns that a crash can occur before send. Follow only documented lifecycle behavior; no flush or retry guarantees delivery.
 - With authorization, emit one non-sensitive direct record after initialization and verify one Logs record with its message, level, and attributes—not only a breadcrumb or event.
 

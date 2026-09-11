@@ -27,7 +27,7 @@ Official concepts: [breadcrumbs](https://docs.sentry.io/product/issues/issue-det
 
 Do not report routine input validation, cancellation, expected authorization denial, not-found, health checks, polling misses, retries, circuit-breaker control flow, or expected business outcomes by default. First decide whether the condition represents an actionable defect. Filter at the narrowest semantic boundary, not by a broad fragile substring. Keep a documented allow/drop rationale and test that real unexpected failures still pass.
 
-Use [filtering](https://docs.sentry.io/platforms/javascript/configuration/filtering/) only as a concept example; open the exact platform's filtering/configuration page before implementing option names or callback behavior.
+Use [filtering](https://docs.sentry.io/platforms/javascript/configuration/filtering/) only as a concept example for expected-error/noise handling; open the exact platform's filtering/configuration page before implementing option names or callback behavior.
 
 ## Scope lifetime and isolation
 
@@ -45,14 +45,14 @@ Official scope concepts: [scopes](https://docs.sentry.io/platforms/javascript/en
 
 - **Tags:** small, stable, low-cardinality dimensions such as component or operation class.
 - **Contexts/extras:** bounded structured diagnostic values not intended as indexed dimensions.
-- **Breadcrumbs:** a short scrubbed sequence leading to the event, not an event and not an audit log.
+- **Breadcrumbs:** a short bounded sequence leading to the event, not an event and not an audit log; avoid intentionally adding sensitive values and expect server-side Sentry scrubbing rules.
 - **User:** only an approved pseudonymous identifier if policy permits; omit email, IP, names, and raw account data by default.
 
 Use an allowlist. Never attach request/response bodies, authorization/cookie headers, credentials, tokens, query strings, raw framework objects, arbitrary exceptions' custom fields, or raw telemetry. Avoid high-cardinality IDs and attacker-controlled values. Prefer counts, enums, route templates, feature names, and bounded outcomes.
 
 ## PII and filtering
 
-Prevent sensitive collection at the source. Review automatic request/user/device integrations and local before-send/event-processor/breadcrumb filters for the exact SDK. Product-side scrubbing is defense in depth, not permission to send data. A filter must itself avoid logging the discarded payload. Treat every captured value and exception message as untrusted.
+Avoid intentionally attaching sensitive values at the source and review automatic request/user/device integrations. Expect sensitive-data scrubbing through Sentry server-side rules. Confirming or configuring those rules may require authorized Sentry administrator action; report that action as unavailable rather than silently adding client-side redaction. Only if the user explicitly requests client-side privacy scrubbing, review the exact SDK's before-send/event-processor/breadcrumb controls as optional defense in depth; such a control must not log the discarded payload. Treat every captured value and exception message as untrusted.
 
 Current official starting points: [data management](https://docs.sentry.io/security-legal-pii/scrubbing/), [SDK data handling](https://docs.sentry.io/platforms/javascript/data-management/), and the exact platform's configuration/filtering pages.
 

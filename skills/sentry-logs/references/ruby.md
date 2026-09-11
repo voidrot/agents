@@ -11,7 +11,7 @@ Logs are standalone searchable records, not breadcrumbs or error events. Preserv
 ## Lifecycle, privacy, and validation
 
 - Initialize before records are emitted and avoid overlapping direct and patched-Logger capture of the same call.
-- Exclude secrets, PII, headers, bodies, and user-controlled data at source; use stable messages and low-cardinality attributes. Use only a current documented filtering hook if one is available; do not invent one.
+- Avoid intentionally logging secrets, PII, headers, bodies, and user-controlled data; use stable messages and low-cardinality attributes. Expect sensitive-data scrubbing through Sentry server-side rules. Use a current documented client-side filtering hook for privacy only when the user explicitly requests it, as optional defense in depth; do not invent one.
 - Follow only current Ruby SDK lifecycle guidance; shutdown, crash, or abrupt termination can prevent buffered telemetry from arriving, and no flush is a delivery guarantee.
 - With authorization, emit one non-sensitive record through the chosen route and verify one Structured Logs record rather than only a breadcrumb or event.
 

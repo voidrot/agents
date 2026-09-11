@@ -16,7 +16,7 @@ Do not use legacy `increment`, `set`, option names, limits, or unit APIs merely 
 
 ## Enablement and filtering
 
-The current pages document `options.enableMetrics = false` to disable metrics and `options.beforeSendMetric` to filter or modify metrics before sending; return `null` to drop. Apply it as defense in depth: call sites must already use fixed names and an allowlist of bounded, non-sensitive attributes. Never emit user IDs, emails, raw URLs/query strings, input, headers, bodies, credentials, or per-request/per-user telemetry without an explicit bounded volume policy.
+The current pages document `options.enableMetrics = false` to disable metrics and `options.beforeSendMetric` to filter or modify metrics before sending; return `null` to drop. Use it to enforce the metric contract and volume/cardinality policy, such as dropping known noisy names or attributes outside a bounded allowlist. It is not default privacy scrubbing: call sites must already use fixed names and non-sensitive attributes, with expected sensitive-data scrubbing through Sentry server-side rules. Never emit user IDs, emails, raw URLs/query strings, input, headers, bodies, credentials, or per-request/per-user telemetry without an explicit bounded volume policy.
 
 ## Attributes and trace boundary
 

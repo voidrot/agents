@@ -18,7 +18,7 @@ No Pino, Winston, Bunyan, or other logging-library bridge is named on the curren
 
 - Inspect whether the deployment is a Worker, Pages Function, or both and find every exported request handler. Apply the current Cloudflare wrapper/setup only to the in-scope handler.
 - Keep request attributes on the request/current scope; never mutate process/global scope with tenant, user, authorization, or request data in a reused isolate.
-- Broad Console capture can forward platform/framework messages. Restrict levels and use `beforeSendLog` with a key allowlist.
+- Broad Console capture can forward platform/framework messages. Restrict levels for volume/noise. Expect sensitive-data scrubbing through Sentry server-side rules; use `beforeSendLog` with a key allowlist for privacy only when the user explicitly requests it, as optional defense in depth.
 - The Cloudflare Logs page does not document a universal flush call for request completion. Do not import Node shutdown patterns, extend request lifetime speculatively, or promise delivery; follow only current Cloudflare lifecycle guidance verified for the installed SDK.
 
 ## Safe validation

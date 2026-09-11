@@ -19,7 +19,7 @@ No other Go library is named as a Structured Logs bridge on the current Go Logs 
 - Initialize before constructing adapters. Pass the request/operation context when creating native, slog, or Zap routes; do not reuse a background-context logger when per-request correlation/isolation is required.
 - Configure one Logs route and distinguish Logrus log hooks from event hooks. Fatal APIs may exit before deferred work; follow the exact adapter's exit/flush guidance.
 - The Go Logs page shows `defer sentry.Flush(2 * time.Second)` before termination, and adapter pages document their own flush/close behavior. Treat every timeout as a bounded attempt, never a delivery guarantee.
-- Use stable typed attributes, not full structs, errors, HTTP requests, headers, bodies, or user-provided strings. Apply `BeforeSendLog`/adapter replacement filtering only as documented, with source-level exclusion first.
+- Use stable typed attributes, not full structs, errors, HTTP requests, headers, bodies, or user-provided strings. Expect sensitive-data scrubbing through Sentry server-side rules. Apply `BeforeSendLog`/adapter replacement filtering for privacy only when the user explicitly requests it, as optional defense in depth.
 
 ## Authorized validation
 

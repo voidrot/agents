@@ -2,14 +2,14 @@
 
 ## Authority boundary
 
-Ask for explicit authorization before changing dependencies, sending a test event, uploading source maps/debug symbols, or running a build/deploy path that can contact Sentry. Do not create projects, releases, environments, alerts, or product settings. A DSN is configuration-sensitive even if it is not a secret: do not echo it, commit it, or embed it in examples. Keep authentication/upload credentials in approved secret storage and out of logs.
+Ask for explicit authorization before changing dependencies, sending a test event, uploading source maps/debug symbols, or running a build/deploy path that can contact Sentry. Do not create projects, releases, environments, alerts, or product settings. A DSN is a routing/configuration identifier, not a secret credential: use placeholders and avoid copying production DSNs into examples, logs, or user-visible evidence to minimize unnecessary configuration disclosure. Keep authentication/upload credentials in approved secret storage and out of logs.
 
 ## Minimize data before capture
 
 - Capture only data needed to diagnose the stated problem. Avoid PII, credentials, authorization headers, request bodies, query values, and sensitive business payloads by default.
-- Use SDK filtering/before-send-style hooks only after checking the current platform API. Prefer dropping an event or field to masking data you do not need.
+- Expect sensitive-data scrubbing through Sentry server-side rules. Confirming or configuring those rules may require authorized Sentry administrator action; report it if unavailable rather than silently adding client-side redaction. Only when the user explicitly requests client-side privacy scrubbing, use SDK filtering/before-send-style hooks after checking the current platform API, as optional defense in depth.
 - Treat breadcrumbs, user context, replay, logs, and tracing attributes as data collection; enable each deliberately and document its purpose.
-- Configure organization-side scrubbing only with authorization; SDK-side filtering is not proof that all product-side data controls are configured.
+- Confirm or configure organization-side scrubbing only with authorization; it is the expected privacy-scrubbing control. SDK-side filtering, when explicitly requested, is optional defense in depth and not proof that product-side rules are configured.
 
 Official data-scrubbing guidance: <https://docs.sentry.io/product/data-management-settings/data-scrubbing/>. Replay and profiling have additional privacy/performance implications; consult <https://docs.sentry.io/product/session-replay/> and <https://docs.sentry.io/product/profiling/> before enabling them.
 
