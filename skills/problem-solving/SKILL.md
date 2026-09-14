@@ -9,7 +9,7 @@ Use this skill to establish why an observed system outcome differs from its requ
 
 ## Workflow
 
-1. **State the discrepancy and boundary.** Record the desired observable behavior, actual observable behavior, affected inputs, environment, timing, and impact. Separate facts from interpretations. Read the relevant contract, callers, tests, recent changes, configuration, and operational artifacts before modifying code. Preserve secrets: use environment-variable names and redact values, tokens, headers, and sensitive payload fields in retained evidence.
+1. **Observe the discrepancy and boundary.** Record the desired observable behavior, actual observable behavior, affected inputs, timing, impact, and material environment, version, and deployment facts. Record relevant recent code, configuration, dependency, and deployment changes. Separate facts from interpretations. Read the relevant contract, callers, tests, configuration, and operational artifacts before modifying code. Preserve secrets: use environment-variable names and redact values, tokens, headers, and sensitive payload fields in retained evidence.
 
 2. **Choose a decisive signal.** Create or locate the narrowest unattended check that can distinguish the reported outcome from the required one: an existing focused test, a minimal command with fixture data, a trace replay, a controlled request, or a benchmark/profiler for performance. Assert the symptom rather than merely checking that execution completes. Run it and retain the command, inputs, environment facts that matter, and result.
    - If it reproduces reliably, use it as the working signal.
@@ -20,18 +20,18 @@ Use this skill to establish why an observed system outcome differs from its requ
 
 4. **Model the relevant system.** Trace data, control, state, and error flow across the smallest affected boundary. Identify ownership, preconditions, invariants, side effects, ordering, concurrency or lifecycle edges, and external contracts. Prefer direct evidence from source, tests, logs, traces, metrics, query plans, or documentation over assumptions. Treat a suspicious pattern or code smell as a lead, not proof.
 
-5. **Form competing, falsifiable hypotheses.** Write two to five ranked causes. For each, state the predicted observation and the smallest reversible probe that distinguishes it from the alternatives. Include an environmental or contract misunderstanding when the evidence permits it. Do not bundle probes or change production behavior just to make a theory fit.
+5. **Hypothesize competing, falsifiable causes.** Write two to five ranked causes. For each, state the predicted observation and the smallest reversible probe that distinguishes it from the alternatives. Include an environmental or contract misunderstanding when the evidence permits it. Do not bundle probes or change production behavior just to make a theory fit.
 
    | Hypothesis | Prediction | Discriminating, reversible probe | Result |
    | --- | --- | --- | --- |
    | | | | |
 
-6. **Run probes one variable at a time.** Prefer inspection, debugger state, a controlled fixture, a temporary local override, or narrowly scoped tagged instrumentation. Run the decisive signal after every material probe. Measure performance before changing it; compare like workloads and record the baseline, elapsed time or resource measure, and variance. Remove temporary instrumentation and probes once they have answered their question.
+6. **Discriminate with one-variable probes.** Prefer inspection, debugger state, a controlled fixture, a temporary local override, or narrowly scoped tagged instrumentation. Run the decisive signal after every material probe. Measure performance before changing it; compare like workloads and record the baseline, elapsed time or resource measure, and variance. Remove temporary instrumentation and probes once they have answered their question.
    - Reject a hypothesis whose predicted observation does not occur.
    - If results contradict all hypotheses, revisit the model, inputs, and signal; then create new hypotheses rather than reinterpreting evidence.
    - If a probe exposes security, data-loss, or production-safety risk, stop it, restore the safe state, and escalate with the evidence.
 
-7. **Identify the root cause and correction boundary.** Name the smallest condition that explains the reproduced symptom and why the evidence excludes the nearest alternatives. Select the narrowest correction at the owner of that condition. Preserve unrelated outputs, errors, side effects, ordering, compatibility, and public contracts. Do not fold in cleanup, redesign, speculative abstraction, or unmeasured optimization. For implementation mechanics, use `efficient-coding`; for focused regression coverage, use `efficient-testing`.
+7. **Analyze the root cause and correction boundary.** Name the smallest condition that explains the reproduced symptom and why the evidence excludes the nearest alternatives. Select the narrowest correction at the owner of that condition. Preserve unrelated outputs, errors, side effects, ordering, compatibility, and public contracts. Do not fold in cleanup, redesign, speculative abstraction, or unmeasured optimization. For implementation mechanics, use `efficient-coding`; for focused regression coverage, use `efficient-testing`.
 
 8. **Make problem-specific algorithm decisions deliberately.** When the uncertainty is algorithmic rather than a defect:
    - Define inputs, outputs, correctness properties, data-size bounds, update/query mix, ordering, memory limit, and unacceptable failure modes. Do not optimize against an invented scale.
