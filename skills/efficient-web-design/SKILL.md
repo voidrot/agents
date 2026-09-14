@@ -29,7 +29,9 @@ Use this skill for web interface design, redesign, visual-system maintenance, `D
 
 4. **Define or revise the visual standards.** Maintain `DESIGN.md` when the request asks for it or when a decision will govern multiple screens, components, or future work. Otherwise produce a scoped design brief and do not create a repository-wide standard by implication.
 
-   When creating or updating `DESIGN.md`, keep it evidence-backed and scoped. Include only sections relevant to the product:
+   When creating or updating `DESIGN.md`, keep it evidence-backed and scoped. The local product-focused template below is an extension, not a replacement for a token catalog. If adopting the upstream Google Labs format, optional machine-readable YAML frontmatter uses exact `---` delimiter lines and includes `name`; add only evidence-backed applicable standard properties (`version`, `description`, `omitted`, `colors`, `typography`, `rounded`, `spacing`, and `components`). Token values are normative; prose explains their product application and rationale. Use optional `{path.to.token}` references only for established tokens. The format is extensible, so retain relevant local sections and do not impose a fixed section order, but do not duplicate level-2 headings.
+
+   Include only sections relevant to the product:
 
    ```markdown
    # Design: <product or surface>
@@ -59,7 +61,7 @@ Use this skill for web interface design, redesign, visual-system maintenance, `D
    - Open questions and decisions that require evidence:
    ```
 
-   Do not prescribe component code, CSS declarations, framework routing, data fetching, or test commands in `DESIGN.md`. Update the evidence and rationale when changing a standard; do not turn a document into a dump of raw values or inherited library defaults.
+   Do not prescribe component code, CSS declarations, framework routing, data fetching, or test commands in `DESIGN.md`. Update the evidence and rationale when changing a standard; do not turn its prose or local extensions into a dump of raw values or inherited library defaults. When project-approved format or lint tooling already exists, it may be run before and after the update; an available token diff may likewise be used to review token changes. Neither is required. Read [DESIGN.md format and tooling](references/design-md-tooling.md) only when the repository has adopted the upstream Google Labs format or a request specifically needs format validation, comparison, or specification lookup.
 
 5. **Make foundations deliberate and usable.** Use existing values and names where they express the intended system. When a new decision is necessary, define it by purpose and relation rather than a collection of unrelated visual values.
    - **Typography:** define roles for display, headings, body, labels, and supporting data as needed. Make hierarchy apparent through a restrained combination of size, weight, line length, line height, and spacing. Preserve readable text at narrow widths and enlarged text.
@@ -94,7 +96,7 @@ Report:
 
 - the design decision, affected surfaces, and product task it supports;
 - visual-system evidence reused or the bounded assumptions made;
-- `DESIGN.md` or standards updated, if any, and its scope;
+- `DESIGN.md` or standards updated, if any, and its scope, including whether upstream-format frontmatter/tokens were adopted;
 - hierarchy, responsive, state, and accessibility acceptance criteria handed off;
-- rendered and accessibility review evidence actually obtained, plus skipped or blocked checks;
+- rendered and accessibility review evidence actually obtained, plus skipped or blocked checks; separately report whether optional format validation, linting, or token diff ran—those checks are not rendered product evidence;
 - remaining open decisions, risks, or implementation dependencies.

@@ -1,0 +1,9 @@
+# Conditional Go testing
+
+Read this only when adding or reviewing Go tests, benchmarks, fuzz targets, or concurrent-code validation. Keep the package's existing runner commands and supported Go version authoritative.
+
+- Use a table with named cases and `t.Run` when cases exercise the same operation and assertions. Give each case its own inputs and expected outcome; do not turn unrelated scenarios into a table. Parallel subtests require isolated fixtures and explicit per-case capture for modules that support Go versions where range variables are reused.
+- Benchmark only a requested or measured performance question. Put one-time setup outside the timed loop, use `b.ResetTimer` when setup must precede it, retain a result so the compiler cannot discard the work, and use `b.Run` for materially different workloads. Include `-benchmem` only when allocation behavior is relevant.
+- Add fuzzing only for an invariant that remains meaningful across broad input: for example, no panic, parser/formatter round trips where valid, bounds preservation, or agreement with a trusted implementation. Seed ordinary edge cases, reject or return from inputs outside the invariant's domain, and keep any minimized failure as a regression input. Do not fuzz merely to replace specific example-based cases.
+- Register resource release when the resource is acquired with `t.Cleanup` or `b.Cleanup`; use `t.TempDir` for temporary files. Mark helpers with `t.Helper`. Let the test runner own teardown rather than relying on process exit or sleeps.
+- For changed code with goroutines or shared mutable state, run the affected packages with `go test -race`; choose the narrowest package pattern that covers the change, then expand when shared code requires it. Treat a race report as a defect to investigate, not a flaky failure to rerun away. The detector is evidence for exercised paths, not proof that unexercised paths are race-free.
