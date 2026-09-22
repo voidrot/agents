@@ -53,4 +53,4 @@ Use this skill for an interactive, stateful browser task through `playwright-cli
 - **Multiple tabs or sessions:** Use `tab-list` and `tab-select` after an action may open a tab; then snapshot the selected tab. Use named sessions only for intentionally separate state.
 - **Dialogs:** Accept or dismiss a dialog only after verifying its text and intended consequence.
 - **Mocking, tracing, video, or custom code:** These are diagnostic/conditional tools, not normal-path steps. Read [failure recovery](references/failure-recovery.md) first. Remove routes and stop recordings when finished.
-- **Generated browser actions:** Only when the user asks to produce recorded Playwright actions, read [test generation](references/test-generation.md). It does not define a generic Playwright Test workflow.
+- **Generated browser actions:** Only when the user asks to produce recorded Playwright actions, read [test generation](references/test-generation.md). It does not define a generic Playwright Test workflow; use the repository's `efficient-e2e-testing` skill for authored or maintained browser-test suites.
