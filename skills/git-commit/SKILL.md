@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: "Review repository conventions and uncommitted changes, then safely plan or create focused Git commits. Use when asked to commit work, draft commit messages, or organize changes into commits; prefer Conventional Commits unless the repository clearly follows another convention."
+description: "Review repository conventions and uncommitted changes, then safely plan or create focused Git commits. Use when asked to commit work, draft commit messages, or organize changes into commits; produce release-please-compatible Conventional Commits when that release automation is present."
 ---
 
 # Git Commit
@@ -9,7 +9,7 @@ Create an accurate, reviewable commit plan from the actual changes. A request to
 
 ## Defaults and boundaries
 
-- Prefer the repository's established commit-message convention when it is clear from local instructions, commit templates, commit tooling, or recent history. Otherwise use Conventional Commits.
+- Prefer the repository convention established by local instructions, commit templates, commit tooling, or recent history. When Release Please is configured, its Conventional Commit contract takes precedence over stylistic patterns in history. Otherwise use Conventional Commits.
 - Do not push, amend, reset, rebase, stash, force-push, skip hooks, change Git configuration, or add co-authors unless the user explicitly requests it.
 - Do not commit secrets, credentials, `.env` files, private keys, generated caches, editor artifacts, or unrelated local work. Pause and ask if a potentially sensitive or ambiguous file appears intended for the commit.
 - Treat already staged changes as likely user intent, but inspect them and report relevant unstaged or untracked work left out.
@@ -32,9 +32,9 @@ Create an accurate, reviewable commit plan from the actual changes. A request to
 2. For each commit, identify the exact files and the message before staging. Stage explicit reviewed paths; do not use `git add .` or `git add -A` unless the user explicitly requests all safe changes and the complete file list was reviewed.
 3. When staged changes do not match the plan, do not silently mix them with other work. Either preserve the staged set as its own coherent commit or ask the user how to proceed.
 
-## Write the message
+## Write a Release Please-compatible message
 
-When Conventional Commits applies, use the official structure:
+When Release Please is configured, or when no other convention is established, use this exact structure:
 
 ```text
 <type>[optional scope][!]: <description>
@@ -44,11 +44,30 @@ When Conventional Commits applies, use the official structure:
 [optional footer(s)]
 ```
 
-- Select the type from the diff: commonly `feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `perf`, `style`, or `chore`.
-- Use a scope only when repository evidence or a stable changed module supports it. Omit it rather than inventing vague scopes such as `misc`, `general`, or `repo`.
-- Write a concise, imperative subject without a trailing period. Follow repository casing and length rules when they exist; otherwise keep the subject readable (normally no more than 72 characters).
-- Use a body only when it explains important context or consequences. For a breaking change, use `!` and a `BREAKING CHANGE:` footer that explains impact and migration when known.
-- If the repository uses another established convention, follow its format and vocabulary rather than forcing Conventional Commits.
+- Write the type in lowercase, put an optional scope in parentheses, put an optional `!` immediately before the colon, and put exactly one space after the colon. The first line must stand alone as a parseable header; do not prefix it with an emoji, ticket number, Markdown bullet, or other text.
+- Choose the release-significant type from the user-visible effect:
+  - `fix:` for a backward-compatible bug fix; Release Please treats it as a patch change.
+  - `feat:` for backward-compatible functionality; Release Please treats it as a minor change.
+  - `<type>!:` for a breaking change; Release Please treats the `!` as a major change. Use the truthful type, commonly `feat!:` or `fix!:`.
+- Use `docs`, `refactor`, `test`, `build`, `ci`, `perf`, `style`, `chore`, or `revert` only when they accurately describe the diff. Do not label a feature or fix as `chore` to avoid a release. Whether other types appear in a changelog or trigger a release can depend on repository Release Please configuration.
+- Use a scope only when repository evidence or a stable changed component supports it. Omit it rather than inventing vague scopes such as `misc`, `general`, or `repo`. In a manifest or monorepo setup, prefer the configured component/package name when the change belongs to one component.
+- Write a concise, imperative description without a trailing period. Follow repository casing and length rules when they exist; otherwise keep the complete header readable, normally no more than 72 characters.
+- Separate a body from the header with one blank line. Use it only for important context or consequences; do not put another Conventional Commit header in the body during ordinary commit creation.
+- For a breaking change, use both the `!` marker and a final `BREAKING CHANGE: <impact and migration>` footer, separated from the body or header by a blank line. The marker ensures Release Please detects the major change; the footer makes the break explicit to readers.
+- Add `Release-As: x.y.z` only when the user explicitly requests that exact next version. It overrides the version inferred from commit types.
+- If the repository explicitly uses another release system or a customized Release Please type/section policy, follow that checked-in configuration and report the evidence used.
+
+Examples:
+
+```text
+fix(parser): preserve escaped delimiters
+
+feat(cli): add JSON output
+
+feat(api)!: require explicit tenant IDs
+
+BREAKING CHANGE: callers must pass tenant_id when creating a client.
+```
 
 ## Stage, verify, and commit
 
